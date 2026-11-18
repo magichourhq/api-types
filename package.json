@@ -1,7 +1,7 @@
 {
   "name": "@magichourhq/api-types",
   "version": "0.0.0-dev.1",
-  "description": "TypeScript types for the Magic Hour API",
+  "description": "Internal TypeScript types for the Magic Hour API",
   "type": "module",
   "license": "MIT",
   "packageManager": "yarn@4.18.0",
@@ -19,13 +19,12 @@
     "url": "git+https://github.com/magichourhq/api-types.git"
   },
   "scripts": {
-    "generate": "openapi-ts -i openapi.json -o node_modules/.cache/api-types -p @hey-api/typescript && mv node_modules/.cache/api-types/types.gen.ts src/index.d.ts",
+    "generate": "node scripts/generate.mjs",
     "check": "tsc -p tsconfig.json",
     "prepack": "yarn check"
   },
   "devDependencies": {
-    "@hey-api/openapi-ts": "0.99.0",
-    "typescript": "5.9.3"
+    "typescript": "7.0.2"
   },
   "publishConfig": {
     "access": "public"

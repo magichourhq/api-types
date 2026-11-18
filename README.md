@@ -2,21 +2,21 @@
 
 TypeScript types for the [Magic Hour API](https://docs.magichour.ai), generated from its OpenAPI spec.
 
+> **Internal package.** This supports Magic Hour's own integrations, and its types can change without notice. Don't install it directly. Use a [Magic Hour SDK](https://docs.magichour.ai) in your own projects.
+
 It will be published to npm as `@magichourhq/api-types`. The package is not available yet.
 
 The package contains only types, so import it with `import type`:
 
 ```ts
 import type {
-  AiImageGeneratorCreateImageData,
-  VideoProjectsGetDetailsError,
-  VideoProjectsGetDetailsResponse,
+  V1AiImageGeneratorCreateBody,
+  V1VideoProjectsGetResponse,
+  V1VideoProjectsGetResponse404,
 } from "@magichourhq/api-types";
-
-type ImageRequest = AiImageGeneratorCreateImageData["body"];
 ```
 
-Type names come from each endpoint's OpenAPI operation ID. Fields use the same snake_case names as the REST API.
+Type names follow the Node SDK. Fields use the same snake_case names as the REST API.
 
 ## Update the types
 
@@ -25,3 +25,5 @@ Replace `openapi.json`, then run:
 ```sh
 yarn generate
 ```
+
+The generator stops on any OpenAPI keyword it doesn't support, so it can't silently produce wrong types.
