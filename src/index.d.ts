@@ -3,7 +3,7 @@
 /**
  * 200
  */
-export type V1AccountListResponse = {
+export type AccountListResponse = {
   /**
    * Unique ID of the account that owns the API key.
    */
@@ -77,7 +77,7 @@ export type V1AccountListResponse = {
 /**
  * Unauthorized
  */
-export type V1AccountListResponse401 = {
+export type AccountListResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -93,7 +93,7 @@ export type V1AccountListResponse401 = {
 /**
  * Internal Server Error
  */
-export type V1AccountListResponse500 = {
+export type AccountListResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -106,7 +106,7 @@ export type V1AccountListResponse500 = {
   message: string;
 };
 
-export type V1SavedItemsListParams = {
+export type SavedItemsListParams = {
   /**
    * Only return saved items of this type.
    */
@@ -124,7 +124,7 @@ export type V1SavedItemsListParams = {
 /**
  * 200
  */
-export type V1SavedItemsListResponse = {
+export type SavedItemsListResponse = {
   items: ({
     /**
      * Unique ID of the saved item.
@@ -170,7 +170,7 @@ export type V1SavedItemsListResponse = {
 /**
  * Invalid Request
  */
-export type V1SavedItemsListResponse400 = {
+export type SavedItemsListResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -186,7 +186,7 @@ export type V1SavedItemsListResponse400 = {
 /**
  * Unauthorized
  */
-export type V1SavedItemsListResponse401 = {
+export type SavedItemsListResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -202,7 +202,7 @@ export type V1SavedItemsListResponse401 = {
 /**
  * Internal Server Error
  */
-export type V1SavedItemsListResponse500 = {
+export type SavedItemsListResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -215,7 +215,7 @@ export type V1SavedItemsListResponse500 = {
   message: string;
 };
 
-export type V1VoicesListParams = {
+export type VoicesListParams = {
   /**
    * Maximum number of voices to return. Defaults to 20.
    */
@@ -229,7 +229,7 @@ export type V1VoicesListParams = {
 /**
  * 200
  */
-export type V1VoicesListResponse = {
+export type VoicesListResponse = {
   voices: ({
     /**
      * Unique ID of the voice. Pass it as `style.voice_name` when generating speech. Names are not unique, so use the ID.
@@ -257,7 +257,7 @@ export type V1VoicesListResponse = {
 /**
  * Invalid Request
  */
-export type V1VoicesListResponse400 = {
+export type VoicesListResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -273,7 +273,7 @@ export type V1VoicesListResponse400 = {
 /**
  * Unauthorized
  */
-export type V1VoicesListResponse401 = {
+export type VoicesListResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -289,7 +289,7 @@ export type V1VoicesListResponse401 = {
 /**
  * Internal Server Error
  */
-export type V1VoicesListResponse500 = {
+export type VoicesListResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -305,7 +305,7 @@ export type V1VoicesListResponse500 = {
 /**
  * Body
  */
-export type V1FilesUploadUrlsCreateBody = {
+export type FilesUploadUrlsCreateBody = {
   /**
    * The list of assets to upload. The response array will match the order of items in the request body.
    */
@@ -324,7 +324,7 @@ export type V1FilesUploadUrlsCreateBody = {
 /**
  * Success
  */
-export type V1FilesUploadUrlsCreateResponse = {
+export type FilesUploadUrlsCreateResponse = {
   /**
    * The list of upload URLs and file paths for the assets. The response array will match the order of items in the request body. Refer to the [Input Files Guide](https://docs.magichour.ai/integration/inputs-and-outputs) for more details.
    */
@@ -347,7 +347,7 @@ export type V1FilesUploadUrlsCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1FilesUploadUrlsCreateResponse400 = {
+export type FilesUploadUrlsCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -363,7 +363,7 @@ export type V1FilesUploadUrlsCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1FilesUploadUrlsCreateResponse401 = {
+export type FilesUploadUrlsCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -379,7 +379,7 @@ export type V1FilesUploadUrlsCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1FilesUploadUrlsCreateResponse402 = {
+export type FilesUploadUrlsCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -399,7 +399,7 @@ export type V1FilesUploadUrlsCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1FilesUploadUrlsCreateResponse404 = {
+export type FilesUploadUrlsCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -415,7 +415,7 @@ export type V1FilesUploadUrlsCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1FilesUploadUrlsCreateResponse422 = {
+export type FilesUploadUrlsCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -431,7 +431,7 @@ export type V1FilesUploadUrlsCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1FilesUploadUrlsCreateResponse500 = {
+export type FilesUploadUrlsCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -444,7 +444,7 @@ export type V1FilesUploadUrlsCreateResponse500 = {
   message: string;
 };
 
-export type V1FaceDetectionGetParams = {
+export type FaceDetectionGetParams = {
   /**
    * The id of the task. This value is returned by the [face detection API](https://docs.magichour.ai/api-reference/files/face-detection#response-id).
    */
@@ -454,7 +454,7 @@ export type V1FaceDetectionGetParams = {
 /**
  * 200
  */
-export type V1FaceDetectionGetResponse = {
+export type FaceDetectionGetResponse = {
   /**
    * The id of the task. This value is returned by the [face detection API](https://docs.magichour.ai/api-reference/files/face-detection#response-id).
    */
@@ -498,7 +498,7 @@ export type V1FaceDetectionGetResponse = {
 /**
  * Invalid Request
  */
-export type V1FaceDetectionGetResponse400 = {
+export type FaceDetectionGetResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -514,7 +514,7 @@ export type V1FaceDetectionGetResponse400 = {
 /**
  * Unauthorized
  */
-export type V1FaceDetectionGetResponse401 = {
+export type FaceDetectionGetResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -530,7 +530,7 @@ export type V1FaceDetectionGetResponse401 = {
 /**
  * Payment Required
  */
-export type V1FaceDetectionGetResponse402 = {
+export type FaceDetectionGetResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -550,7 +550,7 @@ export type V1FaceDetectionGetResponse402 = {
 /**
  * Not Found
  */
-export type V1FaceDetectionGetResponse404 = {
+export type FaceDetectionGetResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -566,7 +566,7 @@ export type V1FaceDetectionGetResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1FaceDetectionGetResponse422 = {
+export type FaceDetectionGetResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -582,7 +582,7 @@ export type V1FaceDetectionGetResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1FaceDetectionGetResponse500 = {
+export type FaceDetectionGetResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -598,7 +598,7 @@ export type V1FaceDetectionGetResponse500 = {
 /**
  * Body
  */
-export type V1FaceDetectionCreateBody = {
+export type FaceDetectionCreateBody = {
   /**
    * Confidence threshold for filtering detected faces.
    * * Higher values (e.g., 0.9) include only faces detected with high certainty, reducing false positives.
@@ -624,7 +624,7 @@ export type V1FaceDetectionCreateBody = {
 /**
  * 200
  */
-export type V1FaceDetectionCreateResponse = {
+export type FaceDetectionCreateResponse = {
   /**
    * The id of the task. Use this value in the [get face detection details API](https://docs.magichour.ai/api-reference/files/get-face-detection-details) to get the details of the face detection task.
    */
@@ -638,7 +638,7 @@ export type V1FaceDetectionCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1FaceDetectionCreateResponse400 = {
+export type FaceDetectionCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -654,7 +654,7 @@ export type V1FaceDetectionCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1FaceDetectionCreateResponse401 = {
+export type FaceDetectionCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -670,7 +670,7 @@ export type V1FaceDetectionCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1FaceDetectionCreateResponse402 = {
+export type FaceDetectionCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -690,7 +690,7 @@ export type V1FaceDetectionCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1FaceDetectionCreateResponse404 = {
+export type FaceDetectionCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -706,7 +706,7 @@ export type V1FaceDetectionCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1FaceDetectionCreateResponse422 = {
+export type FaceDetectionCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -722,7 +722,7 @@ export type V1FaceDetectionCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1FaceDetectionCreateResponse500 = {
+export type FaceDetectionCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -735,7 +735,7 @@ export type V1FaceDetectionCreateResponse500 = {
   message: string;
 };
 
-export type V1VideoProjectsGetParams = {
+export type VideoProjectsGetParams = {
   /**
    * Unique ID of the video project. This value is returned by all of the POST APIs that create a video.
    */
@@ -745,7 +745,7 @@ export type V1VideoProjectsGetParams = {
 /**
  * Success
  */
-export type V1VideoProjectsGetResponse = {
+export type VideoProjectsGetResponse = {
   /**
    * Unique ID of the video. Use it with the [Get video Project API](https://docs.magichour.ai/api-reference/video-projects/get-video-details) to fetch status and downloads.
    */
@@ -839,7 +839,7 @@ export type V1VideoProjectsGetResponse = {
 /**
  * Invalid Request
  */
-export type V1VideoProjectsGetResponse400 = {
+export type VideoProjectsGetResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -855,7 +855,7 @@ export type V1VideoProjectsGetResponse400 = {
 /**
  * Unauthorized
  */
-export type V1VideoProjectsGetResponse401 = {
+export type VideoProjectsGetResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -871,7 +871,7 @@ export type V1VideoProjectsGetResponse401 = {
 /**
  * Payment Required
  */
-export type V1VideoProjectsGetResponse402 = {
+export type VideoProjectsGetResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -891,7 +891,7 @@ export type V1VideoProjectsGetResponse402 = {
 /**
  * Not Found
  */
-export type V1VideoProjectsGetResponse404 = {
+export type VideoProjectsGetResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -907,7 +907,7 @@ export type V1VideoProjectsGetResponse404 = {
 /**
  * Internal Server Error
  */
-export type V1VideoProjectsGetResponse500 = {
+export type VideoProjectsGetResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -920,7 +920,7 @@ export type V1VideoProjectsGetResponse500 = {
   message: string;
 };
 
-export type V1VideoProjectsDeleteParams = {
+export type VideoProjectsDeleteParams = {
   /**
    * Unique ID of the video project. This value is returned by all of the POST APIs that create a video.
    */
@@ -930,7 +930,7 @@ export type V1VideoProjectsDeleteParams = {
 /**
  * Invalid Request
  */
-export type V1VideoProjectsDeleteResponse400 = {
+export type VideoProjectsDeleteResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -946,7 +946,7 @@ export type V1VideoProjectsDeleteResponse400 = {
 /**
  * Unauthorized
  */
-export type V1VideoProjectsDeleteResponse401 = {
+export type VideoProjectsDeleteResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -962,7 +962,7 @@ export type V1VideoProjectsDeleteResponse401 = {
 /**
  * Payment Required
  */
-export type V1VideoProjectsDeleteResponse402 = {
+export type VideoProjectsDeleteResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -982,7 +982,7 @@ export type V1VideoProjectsDeleteResponse402 = {
 /**
  * Not Found
  */
-export type V1VideoProjectsDeleteResponse404 = {
+export type VideoProjectsDeleteResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -998,7 +998,7 @@ export type V1VideoProjectsDeleteResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1VideoProjectsDeleteResponse422 = {
+export type VideoProjectsDeleteResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -1014,7 +1014,7 @@ export type V1VideoProjectsDeleteResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1VideoProjectsDeleteResponse500 = {
+export type VideoProjectsDeleteResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -1030,7 +1030,7 @@ export type V1VideoProjectsDeleteResponse500 = {
 /**
  * Body
  */
-export type V1AiTalkingPhotoCreateBody = {
+export type AiTalkingPhotoCreateBody = {
   /**
    * Give your video a custom name for easy identification.
    */
@@ -1113,7 +1113,7 @@ export type V1AiTalkingPhotoCreateBody = {
 /**
  * Success
  */
-export type V1AiTalkingPhotoCreateResponse = {
+export type AiTalkingPhotoCreateResponse = {
   /**
    * Unique ID of the video. Use it with the [Get video Project API](https://docs.magichour.ai/api-reference/video-projects/get-video-details) to fetch status and downloads.
    */
@@ -1136,7 +1136,7 @@ export type V1AiTalkingPhotoCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1AiTalkingPhotoCreateResponse400 = {
+export type AiTalkingPhotoCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -1152,7 +1152,7 @@ export type V1AiTalkingPhotoCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1AiTalkingPhotoCreateResponse401 = {
+export type AiTalkingPhotoCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -1168,7 +1168,7 @@ export type V1AiTalkingPhotoCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1AiTalkingPhotoCreateResponse402 = {
+export type AiTalkingPhotoCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -1188,7 +1188,7 @@ export type V1AiTalkingPhotoCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1AiTalkingPhotoCreateResponse404 = {
+export type AiTalkingPhotoCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -1204,7 +1204,7 @@ export type V1AiTalkingPhotoCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1AiTalkingPhotoCreateResponse422 = {
+export type AiTalkingPhotoCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -1220,7 +1220,7 @@ export type V1AiTalkingPhotoCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1AiTalkingPhotoCreateResponse500 = {
+export type AiTalkingPhotoCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -1236,7 +1236,7 @@ export type V1AiTalkingPhotoCreateResponse500 = {
 /**
  * Body
  */
-export type V1AiUgcAdCreateBody = {
+export type AiUgcAdCreateBody = {
   assets: {
     /**
      * Prepared image to animate. This value is either
@@ -1277,7 +1277,7 @@ export type V1AiUgcAdCreateBody = {
 /**
  * Success
  */
-export type V1AiUgcAdCreateResponse = {
+export type AiUgcAdCreateResponse = {
   /**
    * Unique ID of the video. Use it with the [Get video Project API](https://docs.magichour.ai/api-reference/video-projects/get-video-details) to fetch status and downloads.
    */
@@ -1300,7 +1300,7 @@ export type V1AiUgcAdCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1AiUgcAdCreateResponse400 = {
+export type AiUgcAdCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -1316,7 +1316,7 @@ export type V1AiUgcAdCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1AiUgcAdCreateResponse401 = {
+export type AiUgcAdCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -1332,7 +1332,7 @@ export type V1AiUgcAdCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1AiUgcAdCreateResponse402 = {
+export type AiUgcAdCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -1352,7 +1352,7 @@ export type V1AiUgcAdCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1AiUgcAdCreateResponse404 = {
+export type AiUgcAdCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -1368,7 +1368,7 @@ export type V1AiUgcAdCreateResponse404 = {
 /**
  * 422
  */
-export type V1AiUgcAdCreateResponse422 = {
+export type AiUgcAdCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -1384,7 +1384,7 @@ export type V1AiUgcAdCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1AiUgcAdCreateResponse500 = {
+export type AiUgcAdCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -1400,7 +1400,7 @@ export type V1AiUgcAdCreateResponse500 = {
 /**
  * Body
  */
-export type V1AiVideoEditorCreateBody = {
+export type AiVideoEditorCreateBody = {
   /**
    * Give your video a custom name for easy identification.
    */
@@ -1468,7 +1468,7 @@ export type V1AiVideoEditorCreateBody = {
 /**
  * Success
  */
-export type V1AiVideoEditorCreateResponse = {
+export type AiVideoEditorCreateResponse = {
   /**
    * Unique ID of the video. Use it with the [Get video Project API](https://docs.magichour.ai/api-reference/video-projects/get-video-details) to fetch status and downloads.
    */
@@ -1491,7 +1491,7 @@ export type V1AiVideoEditorCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1AiVideoEditorCreateResponse400 = {
+export type AiVideoEditorCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -1507,7 +1507,7 @@ export type V1AiVideoEditorCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1AiVideoEditorCreateResponse401 = {
+export type AiVideoEditorCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -1523,7 +1523,7 @@ export type V1AiVideoEditorCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1AiVideoEditorCreateResponse402 = {
+export type AiVideoEditorCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -1543,7 +1543,7 @@ export type V1AiVideoEditorCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1AiVideoEditorCreateResponse404 = {
+export type AiVideoEditorCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -1559,7 +1559,7 @@ export type V1AiVideoEditorCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1AiVideoEditorCreateResponse422 = {
+export type AiVideoEditorCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -1575,7 +1575,7 @@ export type V1AiVideoEditorCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1AiVideoEditorCreateResponse500 = {
+export type AiVideoEditorCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -1591,7 +1591,7 @@ export type V1AiVideoEditorCreateResponse500 = {
 /**
  * Body
  */
-export type V1AiVideoTranslatorCreateBody = {
+export type AiVideoTranslatorCreateBody = {
   /**
    * Give your video a custom name for easy identification.
    */
@@ -1631,7 +1631,7 @@ export type V1AiVideoTranslatorCreateBody = {
 /**
  * Success
  */
-export type V1AiVideoTranslatorCreateResponse = {
+export type AiVideoTranslatorCreateResponse = {
   /**
    * Unique ID of the video. Use it with the [Get video Project API](https://docs.magichour.ai/api-reference/video-projects/get-video-details) to fetch status and downloads.
    */
@@ -1654,7 +1654,7 @@ export type V1AiVideoTranslatorCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1AiVideoTranslatorCreateResponse400 = {
+export type AiVideoTranslatorCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -1670,7 +1670,7 @@ export type V1AiVideoTranslatorCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1AiVideoTranslatorCreateResponse401 = {
+export type AiVideoTranslatorCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -1686,7 +1686,7 @@ export type V1AiVideoTranslatorCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1AiVideoTranslatorCreateResponse402 = {
+export type AiVideoTranslatorCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -1706,7 +1706,7 @@ export type V1AiVideoTranslatorCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1AiVideoTranslatorCreateResponse404 = {
+export type AiVideoTranslatorCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -1722,7 +1722,7 @@ export type V1AiVideoTranslatorCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1AiVideoTranslatorCreateResponse422 = {
+export type AiVideoTranslatorCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -1738,7 +1738,7 @@ export type V1AiVideoTranslatorCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1AiVideoTranslatorCreateResponse500 = {
+export type AiVideoTranslatorCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -1754,7 +1754,7 @@ export type V1AiVideoTranslatorCreateResponse500 = {
 /**
  * Body
  */
-export type V1AiVideoUpscalerCreateBody = {
+export type AiVideoUpscalerCreateBody = {
   /**
    * Give your video a custom name for easy identification.
    */
@@ -1790,7 +1790,7 @@ export type V1AiVideoUpscalerCreateBody = {
 /**
  * Success
  */
-export type V1AiVideoUpscalerCreateResponse = {
+export type AiVideoUpscalerCreateResponse = {
   /**
    * Unique ID of the video. Use it with the [Get video Project API](https://docs.magichour.ai/api-reference/video-projects/get-video-details) to fetch status and downloads.
    */
@@ -1813,7 +1813,7 @@ export type V1AiVideoUpscalerCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1AiVideoUpscalerCreateResponse400 = {
+export type AiVideoUpscalerCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -1829,7 +1829,7 @@ export type V1AiVideoUpscalerCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1AiVideoUpscalerCreateResponse401 = {
+export type AiVideoUpscalerCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -1845,7 +1845,7 @@ export type V1AiVideoUpscalerCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1AiVideoUpscalerCreateResponse402 = {
+export type AiVideoUpscalerCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -1865,7 +1865,7 @@ export type V1AiVideoUpscalerCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1AiVideoUpscalerCreateResponse404 = {
+export type AiVideoUpscalerCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -1881,7 +1881,7 @@ export type V1AiVideoUpscalerCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1AiVideoUpscalerCreateResponse422 = {
+export type AiVideoUpscalerCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -1897,7 +1897,7 @@ export type V1AiVideoUpscalerCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1AiVideoUpscalerCreateResponse500 = {
+export type AiVideoUpscalerCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -1913,7 +1913,7 @@ export type V1AiVideoUpscalerCreateResponse500 = {
 /**
  * Body
  */
-export type V1AnimationCreateBody = {
+export type AnimationCreateBody = {
   /**
    * Give your video a custom name for easy identification.
    */
@@ -2004,7 +2004,7 @@ export type V1AnimationCreateBody = {
 /**
  * Success
  */
-export type V1AnimationCreateResponse = {
+export type AnimationCreateResponse = {
   /**
    * Unique ID of the video. Use it with the [Get video Project API](https://docs.magichour.ai/api-reference/video-projects/get-video-details) to fetch status and downloads.
    */
@@ -2027,7 +2027,7 @@ export type V1AnimationCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1AnimationCreateResponse400 = {
+export type AnimationCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -2043,7 +2043,7 @@ export type V1AnimationCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1AnimationCreateResponse401 = {
+export type AnimationCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -2059,7 +2059,7 @@ export type V1AnimationCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1AnimationCreateResponse402 = {
+export type AnimationCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -2079,7 +2079,7 @@ export type V1AnimationCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1AnimationCreateResponse404 = {
+export type AnimationCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -2095,7 +2095,7 @@ export type V1AnimationCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1AnimationCreateResponse422 = {
+export type AnimationCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -2111,7 +2111,7 @@ export type V1AnimationCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1AnimationCreateResponse500 = {
+export type AnimationCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -2127,7 +2127,7 @@ export type V1AnimationCreateResponse500 = {
 /**
  * Body
  */
-export type V1AudioToVideoCreateBody = {
+export type AudioToVideoCreateBody = {
   /**
    * Give your video a custom name for easy identification.
    */
@@ -2181,7 +2181,7 @@ export type V1AudioToVideoCreateBody = {
 /**
  * Success
  */
-export type V1AudioToVideoCreateResponse = {
+export type AudioToVideoCreateResponse = {
   /**
    * Unique ID of the video. Use it with the [Get video Project API](https://docs.magichour.ai/api-reference/video-projects/get-video-details) to fetch status and downloads.
    */
@@ -2204,7 +2204,7 @@ export type V1AudioToVideoCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1AudioToVideoCreateResponse400 = {
+export type AudioToVideoCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -2220,7 +2220,7 @@ export type V1AudioToVideoCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1AudioToVideoCreateResponse401 = {
+export type AudioToVideoCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -2236,7 +2236,7 @@ export type V1AudioToVideoCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1AudioToVideoCreateResponse402 = {
+export type AudioToVideoCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -2256,7 +2256,7 @@ export type V1AudioToVideoCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1AudioToVideoCreateResponse404 = {
+export type AudioToVideoCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -2272,7 +2272,7 @@ export type V1AudioToVideoCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1AudioToVideoCreateResponse422 = {
+export type AudioToVideoCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -2288,7 +2288,7 @@ export type V1AudioToVideoCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1AudioToVideoCreateResponse500 = {
+export type AudioToVideoCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -2304,7 +2304,7 @@ export type V1AudioToVideoCreateResponse500 = {
 /**
  * Body
  */
-export type V1AutoSubtitleGeneratorCreateBody = {
+export type AutoSubtitleGeneratorCreateBody = {
   /**
    * Give your video a custom name for easy identification.
    */
@@ -2397,7 +2397,7 @@ export type V1AutoSubtitleGeneratorCreateBody = {
 /**
  * Success
  */
-export type V1AutoSubtitleGeneratorCreateResponse = {
+export type AutoSubtitleGeneratorCreateResponse = {
   /**
    * Unique ID of the video. Use it with the [Get video Project API](https://docs.magichour.ai/api-reference/video-projects/get-video-details) to fetch status and downloads.
    */
@@ -2420,7 +2420,7 @@ export type V1AutoSubtitleGeneratorCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1AutoSubtitleGeneratorCreateResponse400 = {
+export type AutoSubtitleGeneratorCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -2436,7 +2436,7 @@ export type V1AutoSubtitleGeneratorCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1AutoSubtitleGeneratorCreateResponse401 = {
+export type AutoSubtitleGeneratorCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -2452,7 +2452,7 @@ export type V1AutoSubtitleGeneratorCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1AutoSubtitleGeneratorCreateResponse402 = {
+export type AutoSubtitleGeneratorCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -2472,7 +2472,7 @@ export type V1AutoSubtitleGeneratorCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1AutoSubtitleGeneratorCreateResponse404 = {
+export type AutoSubtitleGeneratorCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -2488,7 +2488,7 @@ export type V1AutoSubtitleGeneratorCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1AutoSubtitleGeneratorCreateResponse422 = {
+export type AutoSubtitleGeneratorCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -2504,7 +2504,7 @@ export type V1AutoSubtitleGeneratorCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1AutoSubtitleGeneratorCreateResponse500 = {
+export type AutoSubtitleGeneratorCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -2520,7 +2520,7 @@ export type V1AutoSubtitleGeneratorCreateResponse500 = {
 /**
  * Body
  */
-export type V1CharacterReplaceCreateBody = {
+export type CharacterReplaceCreateBody = {
   /**
    * Give your video a custom name for easy identification.
    */
@@ -2607,7 +2607,7 @@ export type V1CharacterReplaceCreateBody = {
 /**
  * Success
  */
-export type V1CharacterReplaceCreateResponse = {
+export type CharacterReplaceCreateResponse = {
   /**
    * Unique ID of the video. Use it with the [Get video Project API](https://docs.magichour.ai/api-reference/video-projects/get-video-details) to fetch status and downloads.
    */
@@ -2630,7 +2630,7 @@ export type V1CharacterReplaceCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1CharacterReplaceCreateResponse400 = {
+export type CharacterReplaceCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -2646,7 +2646,7 @@ export type V1CharacterReplaceCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1CharacterReplaceCreateResponse401 = {
+export type CharacterReplaceCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -2662,7 +2662,7 @@ export type V1CharacterReplaceCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1CharacterReplaceCreateResponse402 = {
+export type CharacterReplaceCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -2682,7 +2682,7 @@ export type V1CharacterReplaceCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1CharacterReplaceCreateResponse404 = {
+export type CharacterReplaceCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -2698,7 +2698,7 @@ export type V1CharacterReplaceCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1CharacterReplaceCreateResponse422 = {
+export type CharacterReplaceCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -2714,7 +2714,7 @@ export type V1CharacterReplaceCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1CharacterReplaceCreateResponse500 = {
+export type CharacterReplaceCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -2730,7 +2730,7 @@ export type V1CharacterReplaceCreateResponse500 = {
 /**
  * Body
  */
-export type V1FaceSwapCreateBody = {
+export type FaceSwapCreateBody = {
   /**
    * Give your video a custom name for easy identification.
    */
@@ -2833,7 +2833,7 @@ export type V1FaceSwapCreateBody = {
 /**
  * Success
  */
-export type V1FaceSwapCreateResponse = {
+export type FaceSwapCreateResponse = {
   /**
    * Unique ID of the video. Use it with the [Get video Project API](https://docs.magichour.ai/api-reference/video-projects/get-video-details) to fetch status and downloads.
    */
@@ -2856,7 +2856,7 @@ export type V1FaceSwapCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1FaceSwapCreateResponse400 = {
+export type FaceSwapCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -2872,7 +2872,7 @@ export type V1FaceSwapCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1FaceSwapCreateResponse401 = {
+export type FaceSwapCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -2888,7 +2888,7 @@ export type V1FaceSwapCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1FaceSwapCreateResponse402 = {
+export type FaceSwapCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -2908,7 +2908,7 @@ export type V1FaceSwapCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1FaceSwapCreateResponse404 = {
+export type FaceSwapCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -2924,7 +2924,7 @@ export type V1FaceSwapCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1FaceSwapCreateResponse422 = {
+export type FaceSwapCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -2940,7 +2940,7 @@ export type V1FaceSwapCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1FaceSwapCreateResponse500 = {
+export type FaceSwapCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -2956,7 +2956,7 @@ export type V1FaceSwapCreateResponse500 = {
 /**
  * Body
  */
-export type V1ImageToVideoCreateBody = {
+export type ImageToVideoCreateBody = {
   /**
    * Give your video a custom name for easy identification.
    */
@@ -3153,7 +3153,7 @@ export type V1ImageToVideoCreateBody = {
 /**
  * Success
  */
-export type V1ImageToVideoCreateResponse = {
+export type ImageToVideoCreateResponse = {
   /**
    * Unique ID of the video. Use it with the [Get video Project API](https://docs.magichour.ai/api-reference/video-projects/get-video-details) to fetch status and downloads.
    */
@@ -3176,7 +3176,7 @@ export type V1ImageToVideoCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1ImageToVideoCreateResponse400 = {
+export type ImageToVideoCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -3192,7 +3192,7 @@ export type V1ImageToVideoCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1ImageToVideoCreateResponse401 = {
+export type ImageToVideoCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -3208,7 +3208,7 @@ export type V1ImageToVideoCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1ImageToVideoCreateResponse402 = {
+export type ImageToVideoCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -3228,7 +3228,7 @@ export type V1ImageToVideoCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1ImageToVideoCreateResponse404 = {
+export type ImageToVideoCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -3244,7 +3244,7 @@ export type V1ImageToVideoCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1ImageToVideoCreateResponse422 = {
+export type ImageToVideoCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -3260,7 +3260,7 @@ export type V1ImageToVideoCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1ImageToVideoCreateResponse500 = {
+export type ImageToVideoCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -3276,7 +3276,7 @@ export type V1ImageToVideoCreateResponse500 = {
 /**
  * Body
  */
-export type V1LipSyncCreateBody = {
+export type LipSyncCreateBody = {
   /**
    * Give your video a custom name for easy identification.
    */
@@ -3360,7 +3360,7 @@ export type V1LipSyncCreateBody = {
 /**
  * Success
  */
-export type V1LipSyncCreateResponse = {
+export type LipSyncCreateResponse = {
   /**
    * Unique ID of the video. Use it with the [Get video Project API](https://docs.magichour.ai/api-reference/video-projects/get-video-details) to fetch status and downloads.
    */
@@ -3383,7 +3383,7 @@ export type V1LipSyncCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1LipSyncCreateResponse400 = {
+export type LipSyncCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -3399,7 +3399,7 @@ export type V1LipSyncCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1LipSyncCreateResponse401 = {
+export type LipSyncCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -3415,7 +3415,7 @@ export type V1LipSyncCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1LipSyncCreateResponse402 = {
+export type LipSyncCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -3435,7 +3435,7 @@ export type V1LipSyncCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1LipSyncCreateResponse404 = {
+export type LipSyncCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -3451,7 +3451,7 @@ export type V1LipSyncCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1LipSyncCreateResponse422 = {
+export type LipSyncCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -3467,7 +3467,7 @@ export type V1LipSyncCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1LipSyncCreateResponse500 = {
+export type LipSyncCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -3483,7 +3483,7 @@ export type V1LipSyncCreateResponse500 = {
 /**
  * Body
  */
-export type V1TextToVideoCreateBody = {
+export type TextToVideoCreateBody = {
   /**
    * Give your video a custom name for easy identification.
    */
@@ -3668,7 +3668,7 @@ export type V1TextToVideoCreateBody = {
 /**
  * Success
  */
-export type V1TextToVideoCreateResponse = {
+export type TextToVideoCreateResponse = {
   /**
    * Unique ID of the video. Use it with the [Get video Project API](https://docs.magichour.ai/api-reference/video-projects/get-video-details) to fetch status and downloads.
    */
@@ -3691,7 +3691,7 @@ export type V1TextToVideoCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1TextToVideoCreateResponse400 = {
+export type TextToVideoCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -3707,7 +3707,7 @@ export type V1TextToVideoCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1TextToVideoCreateResponse401 = {
+export type TextToVideoCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -3723,7 +3723,7 @@ export type V1TextToVideoCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1TextToVideoCreateResponse402 = {
+export type TextToVideoCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -3743,7 +3743,7 @@ export type V1TextToVideoCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1TextToVideoCreateResponse404 = {
+export type TextToVideoCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -3759,7 +3759,7 @@ export type V1TextToVideoCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1TextToVideoCreateResponse422 = {
+export type TextToVideoCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -3775,7 +3775,7 @@ export type V1TextToVideoCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1TextToVideoCreateResponse500 = {
+export type TextToVideoCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -3791,7 +3791,7 @@ export type V1TextToVideoCreateResponse500 = {
 /**
  * Body
  */
-export type V1VideoToVideoCreateBody = {
+export type VideoToVideoCreateBody = {
   /**
    * Give your video a custom name for easy identification.
    */
@@ -3881,7 +3881,7 @@ export type V1VideoToVideoCreateBody = {
 /**
  * Success
  */
-export type V1VideoToVideoCreateResponse = {
+export type VideoToVideoCreateResponse = {
   /**
    * Unique ID of the video. Use it with the [Get video Project API](https://docs.magichour.ai/api-reference/video-projects/get-video-details) to fetch status and downloads.
    */
@@ -3904,7 +3904,7 @@ export type V1VideoToVideoCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1VideoToVideoCreateResponse400 = {
+export type VideoToVideoCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -3920,7 +3920,7 @@ export type V1VideoToVideoCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1VideoToVideoCreateResponse401 = {
+export type VideoToVideoCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -3936,7 +3936,7 @@ export type V1VideoToVideoCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1VideoToVideoCreateResponse402 = {
+export type VideoToVideoCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -3956,7 +3956,7 @@ export type V1VideoToVideoCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1VideoToVideoCreateResponse404 = {
+export type VideoToVideoCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -3972,7 +3972,7 @@ export type V1VideoToVideoCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1VideoToVideoCreateResponse422 = {
+export type VideoToVideoCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -3988,7 +3988,7 @@ export type V1VideoToVideoCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1VideoToVideoCreateResponse500 = {
+export type VideoToVideoCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -4001,7 +4001,7 @@ export type V1VideoToVideoCreateResponse500 = {
   message: string;
 };
 
-export type V1ImageProjectsGetParams = {
+export type ImageProjectsGetParams = {
   /**
    * Unique ID of the image project. This value is returned by all of the POST APIs that create an image.
    */
@@ -4011,7 +4011,7 @@ export type V1ImageProjectsGetParams = {
 /**
  * Success
  */
-export type V1ImageProjectsGetResponse = {
+export type ImageProjectsGetResponse = {
   /**
    * Unique ID of the image. Use it with the [Get image Project API](https://docs.magichour.ai/api-reference/image-projects/get-image-details) to fetch status and downloads.
    */
@@ -4079,7 +4079,7 @@ export type V1ImageProjectsGetResponse = {
 /**
  * Invalid Request
  */
-export type V1ImageProjectsGetResponse400 = {
+export type ImageProjectsGetResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -4095,7 +4095,7 @@ export type V1ImageProjectsGetResponse400 = {
 /**
  * Unauthorized
  */
-export type V1ImageProjectsGetResponse401 = {
+export type ImageProjectsGetResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -4111,7 +4111,7 @@ export type V1ImageProjectsGetResponse401 = {
 /**
  * Payment Required
  */
-export type V1ImageProjectsGetResponse402 = {
+export type ImageProjectsGetResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -4131,7 +4131,7 @@ export type V1ImageProjectsGetResponse402 = {
 /**
  * Not Found
  */
-export type V1ImageProjectsGetResponse404 = {
+export type ImageProjectsGetResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -4147,7 +4147,7 @@ export type V1ImageProjectsGetResponse404 = {
 /**
  * Internal Server Error
  */
-export type V1ImageProjectsGetResponse500 = {
+export type ImageProjectsGetResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -4160,7 +4160,7 @@ export type V1ImageProjectsGetResponse500 = {
   message: string;
 };
 
-export type V1ImageProjectsDeleteParams = {
+export type ImageProjectsDeleteParams = {
   /**
    * Unique ID of the image project. This value is returned by all of the POST APIs that create an image.
    */
@@ -4170,7 +4170,7 @@ export type V1ImageProjectsDeleteParams = {
 /**
  * Invalid Request
  */
-export type V1ImageProjectsDeleteResponse400 = {
+export type ImageProjectsDeleteResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -4186,7 +4186,7 @@ export type V1ImageProjectsDeleteResponse400 = {
 /**
  * Unauthorized
  */
-export type V1ImageProjectsDeleteResponse401 = {
+export type ImageProjectsDeleteResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -4202,7 +4202,7 @@ export type V1ImageProjectsDeleteResponse401 = {
 /**
  * Payment Required
  */
-export type V1ImageProjectsDeleteResponse402 = {
+export type ImageProjectsDeleteResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -4222,7 +4222,7 @@ export type V1ImageProjectsDeleteResponse402 = {
 /**
  * Not Found
  */
-export type V1ImageProjectsDeleteResponse404 = {
+export type ImageProjectsDeleteResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -4238,7 +4238,7 @@ export type V1ImageProjectsDeleteResponse404 = {
 /**
  * Internal Server Error
  */
-export type V1ImageProjectsDeleteResponse500 = {
+export type ImageProjectsDeleteResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -4254,7 +4254,7 @@ export type V1ImageProjectsDeleteResponse500 = {
 /**
  * Body
  */
-export type V1AiClothesChangerCreateBody = {
+export type AiClothesChangerCreateBody = {
   /**
    * Give your image a custom name for easy identification.
    */
@@ -4295,7 +4295,7 @@ export type V1AiClothesChangerCreateBody = {
 /**
  * Success
  */
-export type V1AiClothesChangerCreateResponse = {
+export type AiClothesChangerCreateResponse = {
   /**
    * Unique ID of the image. Use it with the [Get image Project API](https://docs.magichour.ai/api-reference/image-projects/get-image-details) to fetch status and downloads.
    */
@@ -4316,7 +4316,7 @@ export type V1AiClothesChangerCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1AiClothesChangerCreateResponse400 = {
+export type AiClothesChangerCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -4332,7 +4332,7 @@ export type V1AiClothesChangerCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1AiClothesChangerCreateResponse401 = {
+export type AiClothesChangerCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -4348,7 +4348,7 @@ export type V1AiClothesChangerCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1AiClothesChangerCreateResponse402 = {
+export type AiClothesChangerCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -4368,7 +4368,7 @@ export type V1AiClothesChangerCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1AiClothesChangerCreateResponse404 = {
+export type AiClothesChangerCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -4384,7 +4384,7 @@ export type V1AiClothesChangerCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1AiClothesChangerCreateResponse422 = {
+export type AiClothesChangerCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -4400,7 +4400,7 @@ export type V1AiClothesChangerCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1AiClothesChangerCreateResponse500 = {
+export type AiClothesChangerCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -4416,7 +4416,7 @@ export type V1AiClothesChangerCreateResponse500 = {
 /**
  * Body
  */
-export type V1AiFaceEditorCreateBody = {
+export type AiFaceEditorCreateBody = {
   /**
    * Give your image a custom name for easy identification.
    */
@@ -4505,7 +4505,7 @@ export type V1AiFaceEditorCreateBody = {
 /**
  * Success
  */
-export type V1AiFaceEditorCreateResponse = {
+export type AiFaceEditorCreateResponse = {
   /**
    * Unique ID of the image. Use it with the [Get image Project API](https://docs.magichour.ai/api-reference/image-projects/get-image-details) to fetch status and downloads.
    */
@@ -4526,7 +4526,7 @@ export type V1AiFaceEditorCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1AiFaceEditorCreateResponse400 = {
+export type AiFaceEditorCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -4542,7 +4542,7 @@ export type V1AiFaceEditorCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1AiFaceEditorCreateResponse401 = {
+export type AiFaceEditorCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -4558,7 +4558,7 @@ export type V1AiFaceEditorCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1AiFaceEditorCreateResponse402 = {
+export type AiFaceEditorCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -4578,7 +4578,7 @@ export type V1AiFaceEditorCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1AiFaceEditorCreateResponse404 = {
+export type AiFaceEditorCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -4594,7 +4594,7 @@ export type V1AiFaceEditorCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1AiFaceEditorCreateResponse422 = {
+export type AiFaceEditorCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -4610,7 +4610,7 @@ export type V1AiFaceEditorCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1AiFaceEditorCreateResponse500 = {
+export type AiFaceEditorCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -4626,7 +4626,7 @@ export type V1AiFaceEditorCreateResponse500 = {
 /**
  * Body
  */
-export type V1AiGifGeneratorCreateBody = {
+export type AiGifGeneratorCreateBody = {
   /**
    * Give your gif a custom name for easy identification.
    */
@@ -4646,7 +4646,7 @@ export type V1AiGifGeneratorCreateBody = {
 /**
  * Success
  */
-export type V1AiGifGeneratorCreateResponse = {
+export type AiGifGeneratorCreateResponse = {
   /**
    * Unique ID of the image. Use it with the [Get image Project API](https://docs.magichour.ai/api-reference/image-projects/get-image-details) to fetch status and downloads.
    */
@@ -4667,7 +4667,7 @@ export type V1AiGifGeneratorCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1AiGifGeneratorCreateResponse400 = {
+export type AiGifGeneratorCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -4683,7 +4683,7 @@ export type V1AiGifGeneratorCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1AiGifGeneratorCreateResponse401 = {
+export type AiGifGeneratorCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -4699,7 +4699,7 @@ export type V1AiGifGeneratorCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1AiGifGeneratorCreateResponse402 = {
+export type AiGifGeneratorCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -4719,7 +4719,7 @@ export type V1AiGifGeneratorCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1AiGifGeneratorCreateResponse404 = {
+export type AiGifGeneratorCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -4735,7 +4735,7 @@ export type V1AiGifGeneratorCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1AiGifGeneratorCreateResponse422 = {
+export type AiGifGeneratorCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -4751,7 +4751,7 @@ export type V1AiGifGeneratorCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1AiGifGeneratorCreateResponse500 = {
+export type AiGifGeneratorCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -4767,7 +4767,7 @@ export type V1AiGifGeneratorCreateResponse500 = {
 /**
  * Body
  */
-export type V1AiImageEditorCreateBody = {
+export type AiImageEditorCreateBody = {
   /**
    * Give your image a custom name for easy identification.
    */
@@ -4916,7 +4916,7 @@ export type V1AiImageEditorCreateBody = {
 /**
  * Success
  */
-export type V1AiImageEditorCreateResponse = {
+export type AiImageEditorCreateResponse = {
   /**
    * Unique ID of the image. Use it with the [Get image Project API](https://docs.magichour.ai/api-reference/image-projects/get-image-details) to fetch status and downloads.
    */
@@ -4937,7 +4937,7 @@ export type V1AiImageEditorCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1AiImageEditorCreateResponse400 = {
+export type AiImageEditorCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -4953,7 +4953,7 @@ export type V1AiImageEditorCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1AiImageEditorCreateResponse401 = {
+export type AiImageEditorCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -4969,7 +4969,7 @@ export type V1AiImageEditorCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1AiImageEditorCreateResponse402 = {
+export type AiImageEditorCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -4989,7 +4989,7 @@ export type V1AiImageEditorCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1AiImageEditorCreateResponse404 = {
+export type AiImageEditorCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -5005,7 +5005,7 @@ export type V1AiImageEditorCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1AiImageEditorCreateResponse422 = {
+export type AiImageEditorCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -5021,7 +5021,7 @@ export type V1AiImageEditorCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1AiImageEditorCreateResponse500 = {
+export type AiImageEditorCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -5037,7 +5037,7 @@ export type V1AiImageEditorCreateResponse500 = {
 /**
  * Body
  */
-export type V1AiHeadshotGeneratorCreateBody = {
+export type AiHeadshotGeneratorCreateBody = {
   /**
    * Give your image a custom name for easy identification.
    */
@@ -5067,7 +5067,7 @@ export type V1AiHeadshotGeneratorCreateBody = {
 /**
  * Success
  */
-export type V1AiHeadshotGeneratorCreateResponse = {
+export type AiHeadshotGeneratorCreateResponse = {
   /**
    * Unique ID of the image. Use it with the [Get image Project API](https://docs.magichour.ai/api-reference/image-projects/get-image-details) to fetch status and downloads.
    */
@@ -5088,7 +5088,7 @@ export type V1AiHeadshotGeneratorCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1AiHeadshotGeneratorCreateResponse400 = {
+export type AiHeadshotGeneratorCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -5104,7 +5104,7 @@ export type V1AiHeadshotGeneratorCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1AiHeadshotGeneratorCreateResponse401 = {
+export type AiHeadshotGeneratorCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -5120,7 +5120,7 @@ export type V1AiHeadshotGeneratorCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1AiHeadshotGeneratorCreateResponse402 = {
+export type AiHeadshotGeneratorCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -5140,7 +5140,7 @@ export type V1AiHeadshotGeneratorCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1AiHeadshotGeneratorCreateResponse404 = {
+export type AiHeadshotGeneratorCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -5156,7 +5156,7 @@ export type V1AiHeadshotGeneratorCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1AiHeadshotGeneratorCreateResponse422 = {
+export type AiHeadshotGeneratorCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -5172,7 +5172,7 @@ export type V1AiHeadshotGeneratorCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1AiHeadshotGeneratorCreateResponse500 = {
+export type AiHeadshotGeneratorCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -5188,7 +5188,7 @@ export type V1AiHeadshotGeneratorCreateResponse500 = {
 /**
  * Body
  */
-export type V1AiImageGeneratorCreateBody = {
+export type AiImageGeneratorCreateBody = {
   /**
    * Give your image a custom name for easy identification.
    */
@@ -5338,7 +5338,7 @@ export type V1AiImageGeneratorCreateBody = {
 /**
  * Success
  */
-export type V1AiImageGeneratorCreateResponse = {
+export type AiImageGeneratorCreateResponse = {
   /**
    * Unique ID of the image. Use it with the [Get image Project API](https://docs.magichour.ai/api-reference/image-projects/get-image-details) to fetch status and downloads.
    */
@@ -5359,7 +5359,7 @@ export type V1AiImageGeneratorCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1AiImageGeneratorCreateResponse400 = {
+export type AiImageGeneratorCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -5375,7 +5375,7 @@ export type V1AiImageGeneratorCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1AiImageGeneratorCreateResponse401 = {
+export type AiImageGeneratorCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -5391,7 +5391,7 @@ export type V1AiImageGeneratorCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1AiImageGeneratorCreateResponse402 = {
+export type AiImageGeneratorCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -5411,7 +5411,7 @@ export type V1AiImageGeneratorCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1AiImageGeneratorCreateResponse404 = {
+export type AiImageGeneratorCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -5427,7 +5427,7 @@ export type V1AiImageGeneratorCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1AiImageGeneratorCreateResponse422 = {
+export type AiImageGeneratorCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -5443,7 +5443,7 @@ export type V1AiImageGeneratorCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1AiImageGeneratorCreateResponse500 = {
+export type AiImageGeneratorCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -5459,7 +5459,7 @@ export type V1AiImageGeneratorCreateResponse500 = {
 /**
  * Body
  */
-export type V1AiImageUpscalerCreateBody = {
+export type AiImageUpscalerCreateBody = {
   /**
    * Give your image a custom name for easy identification.
    */
@@ -5507,7 +5507,7 @@ export type V1AiImageUpscalerCreateBody = {
 /**
  * Success
  */
-export type V1AiImageUpscalerCreateResponse = {
+export type AiImageUpscalerCreateResponse = {
   /**
    * Unique ID of the image. Use it with the [Get image Project API](https://docs.magichour.ai/api-reference/image-projects/get-image-details) to fetch status and downloads.
    */
@@ -5528,7 +5528,7 @@ export type V1AiImageUpscalerCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1AiImageUpscalerCreateResponse400 = {
+export type AiImageUpscalerCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -5544,7 +5544,7 @@ export type V1AiImageUpscalerCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1AiImageUpscalerCreateResponse401 = {
+export type AiImageUpscalerCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -5560,7 +5560,7 @@ export type V1AiImageUpscalerCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1AiImageUpscalerCreateResponse402 = {
+export type AiImageUpscalerCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -5580,7 +5580,7 @@ export type V1AiImageUpscalerCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1AiImageUpscalerCreateResponse404 = {
+export type AiImageUpscalerCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -5596,7 +5596,7 @@ export type V1AiImageUpscalerCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1AiImageUpscalerCreateResponse422 = {
+export type AiImageUpscalerCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -5612,7 +5612,7 @@ export type V1AiImageUpscalerCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1AiImageUpscalerCreateResponse500 = {
+export type AiImageUpscalerCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -5628,7 +5628,7 @@ export type V1AiImageUpscalerCreateResponse500 = {
 /**
  * Body
  */
-export type V1AiMemeGeneratorCreateBody = {
+export type AiMemeGeneratorCreateBody = {
   /**
    * The name of the meme.
    */
@@ -5652,7 +5652,7 @@ export type V1AiMemeGeneratorCreateBody = {
 /**
  * Success
  */
-export type V1AiMemeGeneratorCreateResponse = {
+export type AiMemeGeneratorCreateResponse = {
   /**
    * Unique ID of the image. Use it with the [Get image Project API](https://docs.magichour.ai/api-reference/image-projects/get-image-details) to fetch status and downloads.
    */
@@ -5673,7 +5673,7 @@ export type V1AiMemeGeneratorCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1AiMemeGeneratorCreateResponse400 = {
+export type AiMemeGeneratorCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -5689,7 +5689,7 @@ export type V1AiMemeGeneratorCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1AiMemeGeneratorCreateResponse401 = {
+export type AiMemeGeneratorCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -5705,7 +5705,7 @@ export type V1AiMemeGeneratorCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1AiMemeGeneratorCreateResponse402 = {
+export type AiMemeGeneratorCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -5725,7 +5725,7 @@ export type V1AiMemeGeneratorCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1AiMemeGeneratorCreateResponse404 = {
+export type AiMemeGeneratorCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -5741,7 +5741,7 @@ export type V1AiMemeGeneratorCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1AiMemeGeneratorCreateResponse422 = {
+export type AiMemeGeneratorCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -5757,7 +5757,7 @@ export type V1AiMemeGeneratorCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1AiMemeGeneratorCreateResponse500 = {
+export type AiMemeGeneratorCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -5773,7 +5773,7 @@ export type V1AiMemeGeneratorCreateResponse500 = {
 /**
  * Body
  */
-export type V1AiQrCodeGeneratorCreateBody = {
+export type AiQrCodeGeneratorCreateBody = {
   /**
    * Give your image a custom name for easy identification.
    */
@@ -5793,7 +5793,7 @@ export type V1AiQrCodeGeneratorCreateBody = {
 /**
  * Success
  */
-export type V1AiQrCodeGeneratorCreateResponse = {
+export type AiQrCodeGeneratorCreateResponse = {
   /**
    * Unique ID of the image. Use it with the [Get image Project API](https://docs.magichour.ai/api-reference/image-projects/get-image-details) to fetch status and downloads.
    */
@@ -5814,7 +5814,7 @@ export type V1AiQrCodeGeneratorCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1AiQrCodeGeneratorCreateResponse400 = {
+export type AiQrCodeGeneratorCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -5830,7 +5830,7 @@ export type V1AiQrCodeGeneratorCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1AiQrCodeGeneratorCreateResponse401 = {
+export type AiQrCodeGeneratorCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -5846,7 +5846,7 @@ export type V1AiQrCodeGeneratorCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1AiQrCodeGeneratorCreateResponse402 = {
+export type AiQrCodeGeneratorCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -5866,7 +5866,7 @@ export type V1AiQrCodeGeneratorCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1AiQrCodeGeneratorCreateResponse404 = {
+export type AiQrCodeGeneratorCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -5882,7 +5882,7 @@ export type V1AiQrCodeGeneratorCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1AiQrCodeGeneratorCreateResponse422 = {
+export type AiQrCodeGeneratorCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -5898,7 +5898,7 @@ export type V1AiQrCodeGeneratorCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1AiQrCodeGeneratorCreateResponse500 = {
+export type AiQrCodeGeneratorCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -5914,7 +5914,7 @@ export type V1AiQrCodeGeneratorCreateResponse500 = {
 /**
  * Body
  */
-export type V1BodySwapCreateBody = {
+export type BodySwapCreateBody = {
   /**
    * Give your image a custom name for easy identification.
    */
@@ -5951,7 +5951,7 @@ export type V1BodySwapCreateBody = {
 /**
  * Success
  */
-export type V1BodySwapCreateResponse = {
+export type BodySwapCreateResponse = {
   /**
    * Unique ID of the image. Use it with the [Get image Project API](https://docs.magichour.ai/api-reference/image-projects/get-image-details) to fetch status and downloads.
    */
@@ -5972,7 +5972,7 @@ export type V1BodySwapCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1BodySwapCreateResponse400 = {
+export type BodySwapCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -5988,7 +5988,7 @@ export type V1BodySwapCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1BodySwapCreateResponse401 = {
+export type BodySwapCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -6004,7 +6004,7 @@ export type V1BodySwapCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1BodySwapCreateResponse402 = {
+export type BodySwapCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -6024,7 +6024,7 @@ export type V1BodySwapCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1BodySwapCreateResponse404 = {
+export type BodySwapCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -6040,7 +6040,7 @@ export type V1BodySwapCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1BodySwapCreateResponse422 = {
+export type BodySwapCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -6056,7 +6056,7 @@ export type V1BodySwapCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1BodySwapCreateResponse500 = {
+export type BodySwapCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -6072,7 +6072,7 @@ export type V1BodySwapCreateResponse500 = {
 /**
  * Body
  */
-export type V1FaceSwapPhotoCreateBody = {
+export type FaceSwapPhotoCreateBody = {
   /**
    * Give your image a custom name for easy identification.
    */
@@ -6134,7 +6134,7 @@ export type V1FaceSwapPhotoCreateBody = {
 /**
  * Success
  */
-export type V1FaceSwapPhotoCreateResponse = {
+export type FaceSwapPhotoCreateResponse = {
   /**
    * Unique ID of the image. Use it with the [Get image Project API](https://docs.magichour.ai/api-reference/image-projects/get-image-details) to fetch status and downloads.
    */
@@ -6155,7 +6155,7 @@ export type V1FaceSwapPhotoCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1FaceSwapPhotoCreateResponse400 = {
+export type FaceSwapPhotoCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -6171,7 +6171,7 @@ export type V1FaceSwapPhotoCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1FaceSwapPhotoCreateResponse401 = {
+export type FaceSwapPhotoCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -6187,7 +6187,7 @@ export type V1FaceSwapPhotoCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1FaceSwapPhotoCreateResponse402 = {
+export type FaceSwapPhotoCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -6207,7 +6207,7 @@ export type V1FaceSwapPhotoCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1FaceSwapPhotoCreateResponse404 = {
+export type FaceSwapPhotoCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -6223,7 +6223,7 @@ export type V1FaceSwapPhotoCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1FaceSwapPhotoCreateResponse422 = {
+export type FaceSwapPhotoCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -6239,7 +6239,7 @@ export type V1FaceSwapPhotoCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1FaceSwapPhotoCreateResponse500 = {
+export type FaceSwapPhotoCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -6255,7 +6255,7 @@ export type V1FaceSwapPhotoCreateResponse500 = {
 /**
  * Body
  */
-export type V1HeadSwapCreateBody = {
+export type HeadSwapCreateBody = {
   /**
    * Give your image a custom name for easy identification.
    */
@@ -6292,7 +6292,7 @@ export type V1HeadSwapCreateBody = {
 /**
  * Success
  */
-export type V1HeadSwapCreateResponse = {
+export type HeadSwapCreateResponse = {
   /**
    * Unique ID of the image. Use it with the [Get image Project API](https://docs.magichour.ai/api-reference/image-projects/get-image-details) to fetch status and downloads.
    */
@@ -6313,7 +6313,7 @@ export type V1HeadSwapCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1HeadSwapCreateResponse400 = {
+export type HeadSwapCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -6329,7 +6329,7 @@ export type V1HeadSwapCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1HeadSwapCreateResponse401 = {
+export type HeadSwapCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -6345,7 +6345,7 @@ export type V1HeadSwapCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1HeadSwapCreateResponse402 = {
+export type HeadSwapCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -6365,7 +6365,7 @@ export type V1HeadSwapCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1HeadSwapCreateResponse404 = {
+export type HeadSwapCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -6381,7 +6381,7 @@ export type V1HeadSwapCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1HeadSwapCreateResponse422 = {
+export type HeadSwapCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -6397,7 +6397,7 @@ export type V1HeadSwapCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1HeadSwapCreateResponse500 = {
+export type HeadSwapCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -6413,7 +6413,7 @@ export type V1HeadSwapCreateResponse500 = {
 /**
  * Body
  */
-export type V1ImageBackgroundRemoverCreateBody = {
+export type ImageBackgroundRemoverCreateBody = {
   /**
    * Give your image a custom name for easy identification.
    */
@@ -6448,7 +6448,7 @@ export type V1ImageBackgroundRemoverCreateBody = {
 /**
  * Success
  */
-export type V1ImageBackgroundRemoverCreateResponse = {
+export type ImageBackgroundRemoverCreateResponse = {
   /**
    * Unique ID of the image. Use it with the [Get image Project API](https://docs.magichour.ai/api-reference/image-projects/get-image-details) to fetch status and downloads.
    */
@@ -6469,7 +6469,7 @@ export type V1ImageBackgroundRemoverCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1ImageBackgroundRemoverCreateResponse400 = {
+export type ImageBackgroundRemoverCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -6485,7 +6485,7 @@ export type V1ImageBackgroundRemoverCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1ImageBackgroundRemoverCreateResponse401 = {
+export type ImageBackgroundRemoverCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -6501,7 +6501,7 @@ export type V1ImageBackgroundRemoverCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1ImageBackgroundRemoverCreateResponse402 = {
+export type ImageBackgroundRemoverCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -6521,7 +6521,7 @@ export type V1ImageBackgroundRemoverCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1ImageBackgroundRemoverCreateResponse404 = {
+export type ImageBackgroundRemoverCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -6537,7 +6537,7 @@ export type V1ImageBackgroundRemoverCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1ImageBackgroundRemoverCreateResponse422 = {
+export type ImageBackgroundRemoverCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -6553,7 +6553,7 @@ export type V1ImageBackgroundRemoverCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1ImageBackgroundRemoverCreateResponse500 = {
+export type ImageBackgroundRemoverCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -6569,7 +6569,7 @@ export type V1ImageBackgroundRemoverCreateResponse500 = {
 /**
  * Body
  */
-export type V1PhotoColorizerCreateBody = {
+export type PhotoColorizerCreateBody = {
   /**
    * Give your image a custom name for easy identification.
    */
@@ -6593,7 +6593,7 @@ export type V1PhotoColorizerCreateBody = {
 /**
  * Success
  */
-export type V1PhotoColorizerCreateResponse = {
+export type PhotoColorizerCreateResponse = {
   /**
    * Unique ID of the image. Use it with the [Get image Project API](https://docs.magichour.ai/api-reference/image-projects/get-image-details) to fetch status and downloads.
    */
@@ -6614,7 +6614,7 @@ export type V1PhotoColorizerCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1PhotoColorizerCreateResponse400 = {
+export type PhotoColorizerCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -6630,7 +6630,7 @@ export type V1PhotoColorizerCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1PhotoColorizerCreateResponse401 = {
+export type PhotoColorizerCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -6646,7 +6646,7 @@ export type V1PhotoColorizerCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1PhotoColorizerCreateResponse402 = {
+export type PhotoColorizerCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -6666,7 +6666,7 @@ export type V1PhotoColorizerCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1PhotoColorizerCreateResponse404 = {
+export type PhotoColorizerCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -6682,7 +6682,7 @@ export type V1PhotoColorizerCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1PhotoColorizerCreateResponse422 = {
+export type PhotoColorizerCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -6698,7 +6698,7 @@ export type V1PhotoColorizerCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1PhotoColorizerCreateResponse500 = {
+export type PhotoColorizerCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -6711,7 +6711,7 @@ export type V1PhotoColorizerCreateResponse500 = {
   message: string;
 };
 
-export type V1AudioProjectsGetParams = {
+export type AudioProjectsGetParams = {
   /**
    * Unique ID of the audio project. This value is returned by all of the POST APIs that create an audio.
    */
@@ -6721,7 +6721,7 @@ export type V1AudioProjectsGetParams = {
 /**
  * Success
  */
-export type V1AudioProjectsGetResponse = {
+export type AudioProjectsGetResponse = {
   /**
    * Unique ID of the audio. Use it with the [Get audio Project API](https://docs.magichour.ai/api-reference/audio-projects/get-audio-details) to fetch status and downloads.
    */
@@ -6780,7 +6780,7 @@ export type V1AudioProjectsGetResponse = {
 /**
  * Invalid Request
  */
-export type V1AudioProjectsGetResponse400 = {
+export type AudioProjectsGetResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -6796,7 +6796,7 @@ export type V1AudioProjectsGetResponse400 = {
 /**
  * Unauthorized
  */
-export type V1AudioProjectsGetResponse401 = {
+export type AudioProjectsGetResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -6812,7 +6812,7 @@ export type V1AudioProjectsGetResponse401 = {
 /**
  * Payment Required
  */
-export type V1AudioProjectsGetResponse402 = {
+export type AudioProjectsGetResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -6832,7 +6832,7 @@ export type V1AudioProjectsGetResponse402 = {
 /**
  * Not Found
  */
-export type V1AudioProjectsGetResponse404 = {
+export type AudioProjectsGetResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -6848,7 +6848,7 @@ export type V1AudioProjectsGetResponse404 = {
 /**
  * Internal Server Error
  */
-export type V1AudioProjectsGetResponse500 = {
+export type AudioProjectsGetResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -6861,7 +6861,7 @@ export type V1AudioProjectsGetResponse500 = {
   message: string;
 };
 
-export type V1AudioProjectsDeleteParams = {
+export type AudioProjectsDeleteParams = {
   /**
    * Unique ID of the audio project. This value is returned by all of the POST APIs that create an audio.
    */
@@ -6871,7 +6871,7 @@ export type V1AudioProjectsDeleteParams = {
 /**
  * Invalid Request
  */
-export type V1AudioProjectsDeleteResponse400 = {
+export type AudioProjectsDeleteResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -6887,7 +6887,7 @@ export type V1AudioProjectsDeleteResponse400 = {
 /**
  * Unauthorized
  */
-export type V1AudioProjectsDeleteResponse401 = {
+export type AudioProjectsDeleteResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -6903,7 +6903,7 @@ export type V1AudioProjectsDeleteResponse401 = {
 /**
  * Payment Required
  */
-export type V1AudioProjectsDeleteResponse402 = {
+export type AudioProjectsDeleteResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -6923,7 +6923,7 @@ export type V1AudioProjectsDeleteResponse402 = {
 /**
  * Not Found
  */
-export type V1AudioProjectsDeleteResponse404 = {
+export type AudioProjectsDeleteResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -6939,7 +6939,7 @@ export type V1AudioProjectsDeleteResponse404 = {
 /**
  * Internal Server Error
  */
-export type V1AudioProjectsDeleteResponse500 = {
+export type AudioProjectsDeleteResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -6955,7 +6955,7 @@ export type V1AudioProjectsDeleteResponse500 = {
 /**
  * Body
  */
-export type V1AiMusicGeneratorCreateBody = {
+export type AiMusicGeneratorCreateBody = {
   /**
    * Give your audio a custom name for easy identification.
    */
@@ -6983,7 +6983,7 @@ export type V1AiMusicGeneratorCreateBody = {
 /**
  * Success
  */
-export type V1AiMusicGeneratorCreateResponse = {
+export type AiMusicGeneratorCreateResponse = {
   /**
    * Unique ID of the audio. Use it with the [Get audio Project API](https://docs.magichour.ai/api-reference/audio-projects/get-audio-details) to fetch status and downloads.
    */
@@ -6999,7 +6999,7 @@ export type V1AiMusicGeneratorCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1AiMusicGeneratorCreateResponse400 = {
+export type AiMusicGeneratorCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -7015,7 +7015,7 @@ export type V1AiMusicGeneratorCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1AiMusicGeneratorCreateResponse401 = {
+export type AiMusicGeneratorCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -7031,7 +7031,7 @@ export type V1AiMusicGeneratorCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1AiMusicGeneratorCreateResponse402 = {
+export type AiMusicGeneratorCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -7051,7 +7051,7 @@ export type V1AiMusicGeneratorCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1AiMusicGeneratorCreateResponse404 = {
+export type AiMusicGeneratorCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -7067,7 +7067,7 @@ export type V1AiMusicGeneratorCreateResponse404 = {
 /**
  * 422
  */
-export type V1AiMusicGeneratorCreateResponse422 = {
+export type AiMusicGeneratorCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -7083,7 +7083,7 @@ export type V1AiMusicGeneratorCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1AiMusicGeneratorCreateResponse500 = {
+export type AiMusicGeneratorCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -7099,7 +7099,7 @@ export type V1AiMusicGeneratorCreateResponse500 = {
 /**
  * Body
  */
-export type V1AiVoiceClonerCreateBody = {
+export type AiVoiceClonerCreateBody = {
   /**
    * Give your audio a custom name for easy identification.
    */
@@ -7137,7 +7137,7 @@ export type V1AiVoiceClonerCreateBody = {
 /**
  * Success
  */
-export type V1AiVoiceClonerCreateResponse = {
+export type AiVoiceClonerCreateResponse = {
   /**
    * Unique ID of the audio. Use it with the [Get audio Project API](https://docs.magichour.ai/api-reference/audio-projects/get-audio-details) to fetch status and downloads.
    */
@@ -7153,7 +7153,7 @@ export type V1AiVoiceClonerCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1AiVoiceClonerCreateResponse400 = {
+export type AiVoiceClonerCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -7169,7 +7169,7 @@ export type V1AiVoiceClonerCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1AiVoiceClonerCreateResponse401 = {
+export type AiVoiceClonerCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -7185,7 +7185,7 @@ export type V1AiVoiceClonerCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1AiVoiceClonerCreateResponse402 = {
+export type AiVoiceClonerCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -7205,7 +7205,7 @@ export type V1AiVoiceClonerCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1AiVoiceClonerCreateResponse404 = {
+export type AiVoiceClonerCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -7221,7 +7221,7 @@ export type V1AiVoiceClonerCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1AiVoiceClonerCreateResponse422 = {
+export type AiVoiceClonerCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -7237,7 +7237,7 @@ export type V1AiVoiceClonerCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1AiVoiceClonerCreateResponse500 = {
+export type AiVoiceClonerCreateResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -7253,7 +7253,7 @@ export type V1AiVoiceClonerCreateResponse500 = {
 /**
  * Body
  */
-export type V1AiVoiceGeneratorCreateBody = {
+export type AiVoiceGeneratorCreateBody = {
   /**
    * Give your audio a custom name for easy identification.
    */
@@ -7284,7 +7284,7 @@ export type V1AiVoiceGeneratorCreateBody = {
 /**
  * Success
  */
-export type V1AiVoiceGeneratorCreateResponse = {
+export type AiVoiceGeneratorCreateResponse = {
   /**
    * Unique ID of the audio. Use it with the [Get audio Project API](https://docs.magichour.ai/api-reference/audio-projects/get-audio-details) to fetch status and downloads.
    */
@@ -7300,7 +7300,7 @@ export type V1AiVoiceGeneratorCreateResponse = {
 /**
  * Invalid Request
  */
-export type V1AiVoiceGeneratorCreateResponse400 = {
+export type AiVoiceGeneratorCreateResponse400 = {
   /**
    * Machine-readable error code.
    *
@@ -7316,7 +7316,7 @@ export type V1AiVoiceGeneratorCreateResponse400 = {
 /**
  * Unauthorized
  */
-export type V1AiVoiceGeneratorCreateResponse401 = {
+export type AiVoiceGeneratorCreateResponse401 = {
   /**
    * Machine-readable error code.
    *
@@ -7332,7 +7332,7 @@ export type V1AiVoiceGeneratorCreateResponse401 = {
 /**
  * Payment Required
  */
-export type V1AiVoiceGeneratorCreateResponse402 = {
+export type AiVoiceGeneratorCreateResponse402 = {
   /**
    * Machine-readable error code.
    *
@@ -7352,7 +7352,7 @@ export type V1AiVoiceGeneratorCreateResponse402 = {
 /**
  * Not Found
  */
-export type V1AiVoiceGeneratorCreateResponse404 = {
+export type AiVoiceGeneratorCreateResponse404 = {
   /**
    * Machine-readable error code.
    *
@@ -7368,7 +7368,7 @@ export type V1AiVoiceGeneratorCreateResponse404 = {
 /**
  * Unprocessable Entity
  */
-export type V1AiVoiceGeneratorCreateResponse422 = {
+export type AiVoiceGeneratorCreateResponse422 = {
   /**
    * Machine-readable error code.
    *
@@ -7384,7 +7384,7 @@ export type V1AiVoiceGeneratorCreateResponse422 = {
 /**
  * Internal Server Error
  */
-export type V1AiVoiceGeneratorCreateResponse500 = {
+export type AiVoiceGeneratorCreateResponse500 = {
   /**
    * Machine-readable error code.
    *

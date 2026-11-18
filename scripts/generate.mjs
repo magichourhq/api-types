@@ -148,7 +148,7 @@ function declareSchema(name, schema, description) {
 }
 
 function operationName(path, method) {
-  const route = pascalCase(path.replace(/\{[^}]+\}/g, ""));
+  const route = pascalCase(path.replace(/^\/v1\//, "/").replace(/\{[^}]+\}/g, ""));
   const verb = method === "get" && !path.endsWith("}") ? "List" : VERBS[method];
   return `${route}${verb}`;
 }

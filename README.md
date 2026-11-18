@@ -10,13 +10,13 @@ The package contains only types, so import it with `import type`:
 
 ```ts
 import type {
-  V1AiImageGeneratorCreateBody,
-  V1VideoProjectsGetResponse,
-  V1VideoProjectsGetResponse404,
+  AiImageGeneratorCreateBody,
+  VideoProjectsGetResponse,
+  VideoProjectsGetResponse404,
 } from "@magichourhq/api-types";
 ```
 
-Type names follow the Node SDK. Fields use the same snake_case names as the REST API.
+Type names follow the Node SDK, without its `V1` prefix. Fields use the same snake_case names as the REST API.
 
 ## Update the types
 
