@@ -19,12 +19,13 @@
     "url": "git+https://github.com/magichourhq/api-types.git"
   },
   "scripts": {
-    "generate": "yarn dlx -p openapi-typescript@7.13.0 -p typescript@5.9.3 openapi-typescript openapi.json -o src/index.d.ts",
+    "generate": "openapi-ts -i openapi.json -o node_modules/.cache/api-types -p @hey-api/typescript && mv node_modules/.cache/api-types/types.gen.ts src/index.d.ts",
     "check": "tsc -p tsconfig.json",
     "prepack": "yarn check"
   },
   "devDependencies": {
-    "typescript": "7.0.2"
+    "@hey-api/openapi-ts": "0.99.0",
+    "typescript": "5.9.3"
   },
   "publishConfig": {
     "access": "public"

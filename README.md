@@ -7,11 +7,16 @@ It will be published to npm as `@magichourhq/api-types`. The package is not avai
 The package contains only types, so import it with `import type`:
 
 ```ts
-import type { paths } from "@magichourhq/api-types";
+import type {
+  AiImageGeneratorCreateImageData,
+  VideoProjectsGetDetailsError,
+  VideoProjectsGetDetailsResponse,
+} from "@magichourhq/api-types";
 
-type VideoProject =
-  paths["/v1/video-projects/{id}"]["get"]["responses"][200]["content"]["application/json"];
+type ImageRequest = AiImageGeneratorCreateImageData["body"];
 ```
+
+Type names come from each endpoint's OpenAPI operation ID. Fields use the same snake_case names as the REST API.
 
 ## Update the types
 
