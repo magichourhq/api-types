@@ -2,7 +2,7 @@
 
 TypeScript types for the [Magic Hour API](https://docs.magichour.ai), generated from its OpenAPI spec.
 
-> **Internal package.** This supports Magic Hour's own integrations, and its types can change without notice. Don't install it directly. Use a [Magic Hour SDK](https://docs.magichour.ai) in your own projects.
+> **Internal package.** This supports Magic Hour's own integrations, and its types can change without notice. Versions may not follow semantic versioning, so any release can include breaking changes. Don't install it directly. Use a [Magic Hour SDK](https://docs.magichour.ai) in your own projects.
 
 It's published to npm as `@magichourhq/api-types`.
 
