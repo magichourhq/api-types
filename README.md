@@ -1,6 +1,10 @@
 # Magic Hour API Types
 
+[![npm](https://img.shields.io/npm/v/@magichourhq/api-types)](https://www.npmjs.com/package/@magichourhq/api-types)
+
 TypeScript types for the [Magic Hour API](https://docs.magichour.ai), generated from its OpenAPI spec.
+
+Magic Hour's JavaScript integrations, such as [`@magichourhq/browser-client`](https://github.com/magichourhq/browser-client), use these types for request bodies and responses. Each integration imports them instead of writing its own copy, so they all match the API spec.
 
 > [!IMPORTANT]
 > This internal package supports Magic Hour's own integrations, and its types can change without notice.
