@@ -394,6 +394,10 @@ export type FilesUploadUrlsCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -545,6 +549,10 @@ export type FaceDetectionGetResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -685,6 +693,10 @@ export type FaceDetectionCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -886,6 +898,10 @@ export type VideoProjectsGetResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -977,6 +993,10 @@ export type VideoProjectsDeleteResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -1183,6 +1203,10 @@ export type AiTalkingPhotoCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -1347,6 +1371,10 @@ export type AiUgcAdCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -1538,6 +1566,10 @@ export type AiVideoEditorCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -1701,6 +1733,10 @@ export type AiVideoTranslatorCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -1860,6 +1896,10 @@ export type AiVideoUpscalerCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -2074,6 +2114,10 @@ export type AnimationCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -2251,6 +2295,10 @@ export type AudioToVideoCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -2467,6 +2515,10 @@ export type AutoSubtitleGeneratorCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -2678,6 +2730,10 @@ export type CharacterReplaceCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -2904,6 +2960,10 @@ export type FaceSwapCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -3224,6 +3284,10 @@ export type ImageToVideoCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -3431,6 +3495,10 @@ export type LipSyncCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -3739,6 +3807,10 @@ export type TextToVideoCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -3952,6 +4024,10 @@ export type VideoToVideoCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -4127,6 +4203,10 @@ export type ImageProjectsGetResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -4218,6 +4298,10 @@ export type ImageProjectsDeleteResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -4364,6 +4448,10 @@ export type AiClothesChangerCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -4574,6 +4662,10 @@ export type AiFaceEditorCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -4715,6 +4807,10 @@ export type AiGifGeneratorCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -4990,6 +5086,10 @@ export type AiImageEditorCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -5141,6 +5241,10 @@ export type AiHeadshotGeneratorCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -5417,6 +5521,10 @@ export type AiImageGeneratorCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -5586,6 +5694,10 @@ export type AiImageUpscalerCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -5731,6 +5843,10 @@ export type AiMemeGeneratorCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -5872,6 +5988,10 @@ export type AiQrCodeGeneratorCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -6030,6 +6150,10 @@ export type BodySwapCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -6213,6 +6337,10 @@ export type FaceSwapPhotoCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -6371,6 +6499,10 @@ export type HeadSwapCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -6527,6 +6659,10 @@ export type ImageBackgroundRemoverCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -6672,6 +6808,10 @@ export type PhotoColorizerCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -6838,6 +6978,10 @@ export type AudioProjectsGetResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -6929,6 +7073,10 @@ export type AudioProjectsDeleteResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -7057,6 +7205,10 @@ export type AiMusicGeneratorCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -7211,6 +7363,10 @@ export type AiVoiceClonerCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
@@ -7358,6 +7514,10 @@ export type AiVoiceGeneratorCreateResponse402 = {
    * Human-readable error message.
    */
   message: string;
+  /**
+   * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
+   */
+  credit_shortfall?: number;
 };
 
 /**
