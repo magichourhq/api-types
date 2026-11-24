@@ -106,6 +106,66 @@ export type AccountListResponse500 = {
   message: string;
 };
 
+/**
+ * Body
+ */
+export type AccountCheckoutCreateBody = {
+  /**
+   * What to buy. `credit_pack` is a one-time credit purchase.
+   */
+  type: "credit_pack";
+  /**
+   * Number of credit packs the checkout starts with. Takes priority over `credit_shortfall`.
+   */
+  pack_count?: number;
+  /**
+   * Credits a blocked request is missing, e.g. `credit_shortfall` from a 402 response. The checkout starts with enough packs to cover it. Defaults to one pack.
+   */
+  credit_shortfall?: number;
+};
+
+/**
+ * 200
+ */
+export type AccountCheckoutCreateResponse = {
+  /**
+   * Open in a browser to complete the purchase.
+   */
+  checkout_url: string;
+};
+
+/**
+ * Unauthorized
+ */
+export type AccountCheckoutCreateResponse401 = {
+  /**
+   * Machine-readable error code.
+   *
+   * - `unauthorized`: Provide a valid API key before retrying.
+   */
+  code: "unauthorized";
+  /**
+   * Human-readable error message.
+   */
+  message: string;
+};
+
+/**
+ * Internal Server Error
+ */
+export type AccountCheckoutCreateResponse500 = {
+  /**
+   * Machine-readable error code.
+   *
+   * - `internal_server_error`: Retry later or contact support if the error continues.
+   */
+  code: "internal_server_error";
+  /**
+   * Human-readable error message.
+   */
+  message: string;
+};
+
 export type SavedItemsListParams = {
   /**
    * Only return saved items of this type.
@@ -3193,7 +3253,7 @@ export type ImageToVideoCreateBody = {
      * * **`seedance-1.5`**: Supports 480p, 720p, 1080p.
      * * **`seedance-2.0`**: Supports 480p, 720p, 1080p, 4k.
      * * **`seedance-2.0-fast`**: Supports 480p, 720p.
-     * * **`seedance-2.0-mini`**: Supports 480p, 720p.
+     * * **`seedance-2.0-mini`**: Not supported
      * * **`seedance-2.5`**: Supports 480p, 720p, 1080p, 4k.
      * * **`veo3.1`**: Supports 720p, 1080p. Requires a duration of 8 seconds or less.
      * * **`veo3.1-lite`**: Supports 720p, 1080p. Requires a duration of 8 seconds or less.
