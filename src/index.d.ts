@@ -840,7 +840,7 @@ export type VideoProjectsGetResponse = {
    */
   status: "draft" | "queued" | "rendering" | "complete" | "error" | "canceled";
   /**
-   * The type of the video project. Possible values are ANIMATION, AUTO_SUBTITLE, VIDEO_TO_VIDEO, FACE_SWAP, TEXT_TO_VIDEO, IMAGE_TO_VIDEO, LIP_SYNC, TALKING_PHOTO, AVATAR, VIDEO_UPSCALER, VIDEO_EDITOR, CHARACTER_REPLACE, VIDEO_COLORIZER, VIDEO_WATERMARK_REMOVER, VIDEO_COLOR_GRADER, VIDEO_TRANSLATOR, MUSIC_VIDEO, EXTEND, AUDIO_TO_VIDEO, VIDEO_EXPANDER, UGC_AD
+   * The type of the video project. Possible values are ANIMATION, AUTO_SUBTITLE, VIDEO_TO_VIDEO, FACE_SWAP, TEXT_TO_VIDEO, IMAGE_TO_VIDEO, LIP_SYNC, TALKING_PHOTO, AVATAR, VIDEO_UPSCALER, VIDEO_EDITOR, CHARACTER_REPLACE, VIDEO_COLORIZER, VIDEO_WATERMARK_REMOVER, VIDEO_COLOR_GRADER, VIDEO_TRANSLATOR, MUSIC_VIDEO, VIDEO_REMIXER, EXTEND, AUDIO_TO_VIDEO, VIDEO_EXPANDER, UGC_AD
    */
   type: string;
   created_at: string;
@@ -1190,6 +1190,10 @@ export type AiTalkingPhotoCreateBody = {
   max_resolution?: number;
 };
 
+export type AiTalkingPhotoCreateParams = {
+  "Idempotency-Key"?: string;
+};
+
 /**
  * Success
  */
@@ -1356,6 +1360,10 @@ export type AiUgcAdCreateBody = {
    * Defaults to 720p on paid plans and 480p on free plans. Unsupported model/resolution combinations and resolutions unavailable for your plan are rejected.
    */
   resolution?: "480p" | "720p" | "1080p";
+};
+
+export type AiUgcAdCreateParams = {
+  "Idempotency-Key"?: string;
 };
 
 /**
@@ -1553,6 +1561,10 @@ export type AiVideoEditorCreateBody = {
   };
 };
 
+export type AiVideoEditorCreateParams = {
+  "Idempotency-Key"?: string;
+};
+
 /**
  * Success
  */
@@ -1720,6 +1732,10 @@ export type AiVideoTranslatorCreateBody = {
   };
 };
 
+export type AiVideoTranslatorCreateParams = {
+  "Idempotency-Key"?: string;
+};
+
 /**
  * Success
  */
@@ -1881,6 +1897,10 @@ export type AiVideoUpscalerCreateBody = {
      */
     video_file_path: string;
   };
+};
+
+export type AiVideoUpscalerCreateParams = {
+  "Idempotency-Key"?: string;
 };
 
 /**
@@ -2101,6 +2121,10 @@ export type AnimationCreateBody = {
   };
 };
 
+export type AnimationCreateParams = {
+  "Idempotency-Key"?: string;
+};
+
 /**
  * Success
  */
@@ -2280,6 +2304,10 @@ export type AudioToVideoCreateBody = {
      */
     prompt?: string;
   };
+};
+
+export type AudioToVideoCreateParams = {
+  "Idempotency-Key"?: string;
 };
 
 /**
@@ -2502,6 +2530,10 @@ export type AutoSubtitleGeneratorCreateBody = {
   };
 };
 
+export type AutoSubtitleGeneratorCreateParams = {
+  "Idempotency-Key"?: string;
+};
+
 /**
  * Success
  */
@@ -2715,6 +2747,10 @@ export type CharacterReplaceCreateBody = {
       time_seconds: number;
     })[];
   };
+};
+
+export type CharacterReplaceCreateParams = {
+  "Idempotency-Key"?: string;
 };
 
 /**
@@ -2945,6 +2981,10 @@ export type FaceSwapCreateBody = {
      */
     youtube_url?: string;
   };
+};
+
+export type FaceSwapCreateParams = {
+  "Idempotency-Key"?: string;
 };
 
 /**
@@ -3271,6 +3311,10 @@ export type ImageToVideoCreateBody = {
   };
 };
 
+export type ImageToVideoCreateParams = {
+  "Idempotency-Key"?: string;
+};
+
 /**
  * Success
  */
@@ -3480,6 +3524,10 @@ export type LipSyncCreateBody = {
      */
     generation_mode?: "lite" | "standard" | "pro";
   };
+};
+
+export type LipSyncCreateParams = {
+  "Idempotency-Key"?: string;
 };
 
 /**
@@ -3794,6 +3842,10 @@ export type TextToVideoCreateBody = {
   })[];
 };
 
+export type TextToVideoCreateParams = {
+  "Idempotency-Key"?: string;
+};
+
 /**
  * Success
  */
@@ -4009,6 +4061,10 @@ export type VideoToVideoCreateBody = {
      */
     initial_image_path?: string;
   };
+};
+
+export type VideoToVideoCreateParams = {
+  "Idempotency-Key"?: string;
 };
 
 /**
@@ -4437,6 +4493,10 @@ export type AiClothesChangerCreateBody = {
   };
 };
 
+export type AiClothesChangerCreateParams = {
+  "Idempotency-Key"?: string;
+};
+
 /**
  * Success
  */
@@ -4651,6 +4711,10 @@ export type AiFaceEditorCreateBody = {
   };
 };
 
+export type AiFaceEditorCreateParams = {
+  "Idempotency-Key"?: string;
+};
+
 /**
  * Success
  */
@@ -4794,6 +4858,10 @@ export type AiGifGeneratorCreateBody = {
    * The output file format for the generated animation.
    */
   output_format?: "gif" | "mp4" | "webm";
+};
+
+export type AiGifGeneratorCreateParams = {
+  "Idempotency-Key"?: string;
 };
 
 /**
@@ -4962,6 +5030,10 @@ export type AiImageEditorCreateBody = {
    *   - Supported resolutions: 640px, 1k
    *   - Available for tiers: creator, pro, business
    *   - Max additional input images: 9
+   * - `nano-banana-2` - from 100 credits/image
+   *   - Supported resolutions: 640px, 1k, 2k, 4k
+   *   - Available for tiers: creator, pro, business
+   *   - Max additional input images: 9
    * - `nano-banana-2-lite` - from 50 credits/image
    *   - Supported resolutions: 640px, 1k
    *   - Available for tiers: creator, pro, business
@@ -5022,6 +5094,7 @@ export type AiImageEditorCreateBody = {
    * - `gpt-image-2.5-flare` - 640px, 1k, 2k, 4k
    * - `krea-2` - 640px, 1k
    * - `nano-banana` - 640px, 1k
+   * - `nano-banana-2` - 640px, 1k, 2k, 4k
    * - `nano-banana-2-lite` - 640px, 1k
    * - `nano-banana-2.1` - 640px, 1k, 2k, 4k
    * - `nano-banana-pro` - 1k, 2k, 4k
@@ -5073,6 +5146,10 @@ export type AiImageEditorCreateBody = {
      */
     image_file_paths?: (string)[];
   };
+};
+
+export type AiImageEditorCreateParams = {
+  "Idempotency-Key"?: string;
 };
 
 /**
@@ -5228,6 +5305,10 @@ export type AiHeadshotGeneratorCreateBody = {
      */
     image_file_path: string;
   };
+};
+
+export type AiHeadshotGeneratorCreateParams = {
+  "Idempotency-Key"?: string;
 };
 
 /**
@@ -5400,6 +5481,10 @@ export type AiImageGeneratorCreateBody = {
    *   - Supported resolutions: 640px, 1k
    *   - Available for tiers: creator, pro, business
    *   - Image count allowed: 1, 2, 3, 4
+   * - `nano-banana-2` - from 100 credits/image
+   *   - Supported resolutions: 640px, 1k, 2k, 4k
+   *   - Available for tiers: creator, pro, business
+   *   - Image count allowed: 1, 4, 9, 16
    * - `nano-banana-2-lite` - from 50 credits/image
    *   - Supported resolutions: 640px, 1k
    *   - Available for tiers: creator, pro, business
@@ -5441,7 +5526,7 @@ export type AiImageGeneratorCreateBody = {
    * - `seedream` - Use `seedream-v4` instead.
    *
    */
-  model?: "default" | "z-image-turbo" | "gpt-image-2" | "qwen-image-2.1" | "flux-2-klein" | "flux-3-klein" | "nano-banana-2.1" | "nano-banana-pro" | "krea-2" | "seedream-v5-pro" | "seedream-v5-flash" | "seedream-v4.5" | "nano-banana-2-lite" | "gpt-image-2.5-flare" | "seedream-v4" | "nano-banana" | "flux-schnell" | "seedream" | "nano-banana-2";
+  model?: "default" | "z-image-turbo" | "gpt-image-2" | "qwen-image-2.1" | "flux-2-klein" | "flux-3-klein" | "nano-banana-2.1" | "nano-banana-pro" | "krea-2" | "seedream-v5-pro" | "seedream-v5-flash" | "seedream-v4.5" | "nano-banana-2-lite" | "gpt-image-2.5-flare" | "seedream-v4" | "nano-banana" | "flux-schnell" | "nano-banana-2" | "seedream";
   /**
    * The aspect ratio of the output image(s). If not specified, defaults to `1:1` (square).
    */
@@ -5464,6 +5549,7 @@ export type AiImageGeneratorCreateBody = {
    * - `gpt-image-2.5-flare` - 640px, 1k, 2k, 4k
    * - `krea-2` - 640px, 1k
    * - `nano-banana` - 640px, 1k
+   * - `nano-banana-2` - 640px, 1k, 2k, 4k
    * - `nano-banana-2-lite` - 640px, 1k
    * - `nano-banana-2.1` - 640px, 1k, 2k, 4k
    * - `nano-banana-pro` - 1k, 2k, 4k
@@ -5508,6 +5594,10 @@ export type AiImageGeneratorCreateBody = {
      */
     quality_mode?: "standard" | "pro";
   };
+};
+
+export type AiImageGeneratorCreateParams = {
+  "Idempotency-Key"?: string;
 };
 
 /**
@@ -5683,6 +5773,10 @@ export type AiImageUpscalerCreateBody = {
   };
 };
 
+export type AiImageUpscalerCreateParams = {
+  "Idempotency-Key"?: string;
+};
+
 /**
  * Success
  */
@@ -5832,6 +5926,10 @@ export type AiMemeGeneratorCreateBody = {
   };
 };
 
+export type AiMemeGeneratorCreateParams = {
+  "Idempotency-Key"?: string;
+};
+
 /**
  * Success
  */
@@ -5975,6 +6073,10 @@ export type AiQrCodeGeneratorCreateBody = {
      */
     art_style: string;
   };
+};
+
+export type AiQrCodeGeneratorCreateParams = {
+  "Idempotency-Key"?: string;
 };
 
 /**
@@ -6137,6 +6239,10 @@ export type BodySwapCreateBody = {
      */
     scene_file_path: string;
   };
+};
+
+export type BodySwapCreateParams = {
+  "Idempotency-Key"?: string;
 };
 
 /**
@@ -6326,6 +6432,10 @@ export type FaceSwapPhotoCreateBody = {
   };
 };
 
+export type FaceSwapPhotoCreateParams = {
+  "Idempotency-Key"?: string;
+};
+
 /**
  * Success
  */
@@ -6488,6 +6598,10 @@ export type HeadSwapCreateBody = {
   };
 };
 
+export type HeadSwapCreateParams = {
+  "Idempotency-Key"?: string;
+};
+
 /**
  * Success
  */
@@ -6648,6 +6762,10 @@ export type ImageBackgroundRemoverCreateBody = {
   };
 };
 
+export type ImageBackgroundRemoverCreateParams = {
+  "Idempotency-Key"?: string;
+};
+
 /**
  * Success
  */
@@ -6795,6 +6913,10 @@ export type PhotoColorizerCreateBody = {
      */
     image_file_path: string;
   };
+};
+
+export type PhotoColorizerCreateParams = {
+  "Idempotency-Key"?: string;
 };
 
 /**
@@ -7199,6 +7321,10 @@ export type AiMusicGeneratorCreateBody = {
   };
 };
 
+export type AiMusicGeneratorCreateParams = {
+  "Idempotency-Key"?: string;
+};
+
 /**
  * Success
  */
@@ -7357,6 +7483,10 @@ export type AiVoiceClonerCreateBody = {
   };
 };
 
+export type AiVoiceClonerCreateParams = {
+  "Idempotency-Key"?: string;
+};
+
 /**
  * Success
  */
@@ -7506,6 +7636,10 @@ export type AiVoiceGeneratorCreateBody = {
      */
     speed?: number;
   };
+};
+
+export type AiVoiceGeneratorCreateParams = {
+  "Idempotency-Key"?: string;
 };
 
 /**
