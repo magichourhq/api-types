@@ -280,6 +280,200 @@ export type EstimateImageListResponse500 = {
   message: string;
 };
 
+export type EstimateVideoListParams = {
+  /**
+   * The create endpoint to price, named by its path. For example `image-to-video` for `POST /v1/image-to-video`.
+   */
+  tool: "image-to-video" | "text-to-video" | "ai-ugc-ad" | "ai-video-editor" | "character-replace" | "audio-to-video" | "ai-video-translator" | "ai-video-upscaler" | "face-swap" | "auto-subtitle-generator";
+  /**
+   * The `end_seconds` of the create request. Used by every tool.
+   */
+  end_seconds: number;
+  /**
+   * The `start_seconds` of the create request, for tools whose create request has it. Defaults to 0.
+   */
+  start_seconds?: number;
+  /**
+   * The `model` of the create request. Used by `image-to-video`, `text-to-video`, `ai-ugc-ad`, `ai-video-editor`, `character-replace`.
+   */
+  model?: string;
+  /**
+   * The `resolution` of the create request. Used by `image-to-video`, `text-to-video`, `ai-ugc-ad`, `ai-video-editor`, `character-replace`, `audio-to-video`, `ai-video-translator`, `ai-video-upscaler`. `ai-video-translator` defaults to `480p`.
+   */
+  resolution?: string;
+  /**
+   * The `audio` of the create request. Used by `image-to-video`, `text-to-video`. Defaults to `false`.
+   */
+  audio?: boolean;
+  /**
+   * Whether any of the create request's `references` is a video. Used by `text-to-video`. Defaults to `false`.
+   */
+  has_video_reference?: boolean;
+};
+
+/**
+ * Success
+ */
+export type EstimateVideoListResponse = {
+  /**
+   * Credits a create request with these fields charges.
+   */
+  estimated_credits: number;
+};
+
+/**
+ * Invalid Request
+ */
+export type EstimateVideoListResponse400 = {
+  /**
+   * Machine-readable error code.
+   *
+   * - `invalid_request`: Fix request syntax or validation errors before retrying.
+   */
+  code: "invalid_request";
+  /**
+   * Human-readable error message.
+   */
+  message: string;
+};
+
+/**
+ * Unauthorized
+ */
+export type EstimateVideoListResponse401 = {
+  /**
+   * Machine-readable error code.
+   *
+   * - `unauthorized`: Provide a valid API key before retrying.
+   */
+  code: "unauthorized";
+  /**
+   * Human-readable error message.
+   */
+  message: string;
+};
+
+/**
+ * Unprocessable Entity
+ */
+export type EstimateVideoListResponse422 = {
+  /**
+   * Machine-readable error code.
+   *
+   * - `unprocessable_entity`: Change the request values before retrying.
+   */
+  code: "unprocessable_entity";
+  /**
+   * Human-readable error message.
+   */
+  message: string;
+};
+
+/**
+ * Internal Server Error
+ */
+export type EstimateVideoListResponse500 = {
+  /**
+   * Machine-readable error code.
+   *
+   * - `internal_server_error`: Retry later or contact support if the error continues.
+   */
+  code: "internal_server_error";
+  /**
+   * Human-readable error message.
+   */
+  message: string;
+};
+
+export type EstimateAudioListParams = {
+  /**
+   * The create endpoint to price, named by its path. For example `ai-voice-generator` for `POST /v1/ai-voice-generator`.
+   */
+  tool: "ai-voice-generator" | "ai-voice-cloner" | "ai-music-generator";
+  /**
+   * The number of characters in the `style.prompt` of the create request. Used by `ai-voice-generator`, `ai-voice-cloner`.
+   */
+  character_count?: number;
+  /**
+   * The `duration` of the create request. Used by `ai-music-generator`.
+   */
+  duration?: number;
+};
+
+/**
+ * Success
+ */
+export type EstimateAudioListResponse = {
+  /**
+   * Credits a create request with these fields charges.
+   */
+  estimated_credits: number;
+};
+
+/**
+ * Invalid Request
+ */
+export type EstimateAudioListResponse400 = {
+  /**
+   * Machine-readable error code.
+   *
+   * - `invalid_request`: Fix request syntax or validation errors before retrying.
+   */
+  code: "invalid_request";
+  /**
+   * Human-readable error message.
+   */
+  message: string;
+};
+
+/**
+ * Unauthorized
+ */
+export type EstimateAudioListResponse401 = {
+  /**
+   * Machine-readable error code.
+   *
+   * - `unauthorized`: Provide a valid API key before retrying.
+   */
+  code: "unauthorized";
+  /**
+   * Human-readable error message.
+   */
+  message: string;
+};
+
+/**
+ * Unprocessable Entity
+ */
+export type EstimateAudioListResponse422 = {
+  /**
+   * Machine-readable error code.
+   *
+   * - `unprocessable_entity`: Change the request values before retrying.
+   */
+  code: "unprocessable_entity";
+  /**
+   * Human-readable error message.
+   */
+  message: string;
+};
+
+/**
+ * Internal Server Error
+ */
+export type EstimateAudioListResponse500 = {
+  /**
+   * Machine-readable error code.
+   *
+   * - `internal_server_error`: Retry later or contact support if the error continues.
+   */
+  code: "internal_server_error";
+  /**
+   * Human-readable error message.
+   */
+  message: string;
+};
+
 export type SavedItemsListParams = {
   /**
    * Only return saved items of this type.

@@ -1,6 +1,6 @@
 {
   "name": "@magichourhq/api-types",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Internal TypeScript types for the Magic Hour API",
   "type": "module",
   "license": "MIT",
