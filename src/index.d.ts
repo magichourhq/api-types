@@ -72,6 +72,19 @@ export type AccountListResponse = {
      */
     cancel_at_period_end: boolean;
   }) | null;
+  auto_reload: {
+    /**
+     * State of Auto Reload on the account.
+     * - `disabled`: off or never set up.
+     * - `active`: on, with no refill processing or blocked.
+     * - `auto_reload_pending`: a refill is processing. Check again shortly.
+     * - `payment_failed`: the last refill payment failed and paused Auto Reload until the payment method is updated.
+     * - `spending_limit_reached`: the monthly limit blocked the last refill.
+     *
+     * After an `insufficient_credits` rejection, resubmit the same request once `credits` reaches that rejection's `credits_required`.
+     */
+    status: "disabled" | "active" | "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -154,6 +167,107 @@ export type AccountCheckoutCreateResponse401 = {
  * Internal Server Error
  */
 export type AccountCheckoutCreateResponse500 = {
+  /**
+   * Machine-readable error code.
+   *
+   * - `internal_server_error`: Retry later or contact support if the error continues.
+   */
+  code: "internal_server_error";
+  /**
+   * Human-readable error message.
+   */
+  message: string;
+};
+
+export type EstimateImageListParams = {
+  /**
+   * The create endpoint to price, named by its path. For example `ai-image-editor` for `POST /v1/ai-image-editor`.
+   */
+  tool: "ai-image-generator" | "ai-image-editor" | "ai-image-upscaler" | "body-swap" | "head-swap" | "face-swap-photo" | "ai-clothes-changer" | "ai-face-editor" | "ai-gif-generator" | "ai-headshot-generator" | "ai-meme-generator" | "ai-qr-code-generator" | "image-background-remover" | "photo-colorizer";
+  /**
+   * The `model` of the create request. Used by `ai-image-generator`, `ai-image-editor`.
+   */
+  model?: string;
+  /**
+   * The `resolution` of the create request. Used by `ai-image-generator`, `ai-image-editor`, `body-swap`. One of `640px`, `1k`, `2k`, `4k`.
+   */
+  resolution?: string;
+  /**
+   * The `image_count` of the create request. Used by `ai-image-generator`, `ai-image-editor`. Defaults to 1.
+   */
+  image_count?: number;
+  /**
+   * The `scale_factor` of the create request. Used by `ai-image-upscaler`. One of `2`, `4`.
+   */
+  scale_factor?: number;
+  /**
+   * The `style.mode` of the create request. Used by `ai-image-upscaler`. One of `preserve`, `balanced`, `creative`. Defaults to `balanced`.
+   */
+  mode?: string;
+};
+
+/**
+ * Success
+ */
+export type EstimateImageListResponse = {
+  /**
+   * Credits a create request with these fields charges.
+   */
+  estimated_credits: number;
+};
+
+/**
+ * Invalid Request
+ */
+export type EstimateImageListResponse400 = {
+  /**
+   * Machine-readable error code.
+   *
+   * - `invalid_request`: Fix request syntax or validation errors before retrying.
+   */
+  code: "invalid_request";
+  /**
+   * Human-readable error message.
+   */
+  message: string;
+};
+
+/**
+ * Unauthorized
+ */
+export type EstimateImageListResponse401 = {
+  /**
+   * Machine-readable error code.
+   *
+   * - `unauthorized`: Provide a valid API key before retrying.
+   */
+  code: "unauthorized";
+  /**
+   * Human-readable error message.
+   */
+  message: string;
+};
+
+/**
+ * Unprocessable Entity
+ */
+export type EstimateImageListResponse422 = {
+  /**
+   * Machine-readable error code.
+   *
+   * - `unprocessable_entity`: Change the request values before retrying.
+   */
+  code: "unprocessable_entity";
+  /**
+   * Human-readable error message.
+   */
+  message: string;
+};
+
+/**
+ * Internal Server Error
+ */
+export type EstimateImageListResponse500 = {
   /**
    * Machine-readable error code.
    *
@@ -458,6 +572,21 @@ export type FilesUploadUrlsCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -613,6 +742,21 @@ export type FaceDetectionGetResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -757,6 +901,21 @@ export type FaceDetectionCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -840,7 +999,7 @@ export type VideoProjectsGetResponse = {
    */
   status: "draft" | "queued" | "rendering" | "complete" | "error" | "canceled";
   /**
-   * The type of the video project. Possible values are ANIMATION, AUTO_SUBTITLE, VIDEO_TO_VIDEO, FACE_SWAP, TEXT_TO_VIDEO, IMAGE_TO_VIDEO, LIP_SYNC, TALKING_PHOTO, AVATAR, VIDEO_UPSCALER, VIDEO_EDITOR, CHARACTER_REPLACE, VIDEO_COLORIZER, VIDEO_WATERMARK_REMOVER, VIDEO_COLOR_GRADER, VIDEO_TRANSLATOR, MUSIC_VIDEO, VIDEO_REMIXER, EXTEND, AUDIO_TO_VIDEO, VIDEO_EXPANDER, UGC_AD
+   * The type of the video project. Possible values are ANIMATION, AUTO_SUBTITLE, VIDEO_TO_VIDEO, FACE_SWAP, TEXT_TO_VIDEO, IMAGE_TO_VIDEO, LIP_SYNC, TALKING_PHOTO, AVATAR, VIDEO_UPSCALER, VIDEO_EDITOR, CHARACTER_REPLACE, VIDEO_COLORIZER, VIDEO_WATERMARK_REMOVER, VIDEO_COLOR_GRADER, VIDEO_TRANSLATOR, MUSIC_VIDEO, VIDEO_REMIXER, MOTION_GRAPHICS, TRANSITIONS, EXTEND, AUDIO_TO_VIDEO, VIDEO_EXPANDER, UGC_AD
    */
   type: string;
   created_at: string;
@@ -962,6 +1121,21 @@ export type VideoProjectsGetResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -1057,6 +1231,21 @@ export type VideoProjectsDeleteResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -1271,6 +1460,21 @@ export type AiTalkingPhotoCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -1443,6 +1647,21 @@ export type AiUgcAdCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -1642,6 +1861,21 @@ export type AiVideoEditorCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -1813,6 +2047,21 @@ export type AiVideoTranslatorCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -1980,6 +2229,21 @@ export type AiVideoUpscalerCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -2202,6 +2466,21 @@ export type AnimationCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -2387,6 +2666,21 @@ export type AudioToVideoCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -2611,6 +2905,21 @@ export type AutoSubtitleGeneratorCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -2830,6 +3139,21 @@ export type CharacterReplaceCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -3064,6 +3388,21 @@ export type FaceSwapCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -3392,6 +3731,21 @@ export type ImageToVideoCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -3607,6 +3961,21 @@ export type LipSyncCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -3923,6 +4292,21 @@ export type TextToVideoCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -4144,6 +4528,21 @@ export type VideoToVideoCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -4323,6 +4722,21 @@ export type ImageProjectsGetResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -4418,6 +4832,21 @@ export type ImageProjectsDeleteResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -4572,6 +5001,21 @@ export type AiClothesChangerCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -4790,6 +5234,21 @@ export type AiFaceEditorCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -4939,6 +5398,21 @@ export type AiGifGeneratorCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -5227,6 +5701,21 @@ export type AiImageEditorCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -5386,6 +5875,21 @@ export type AiHeadshotGeneratorCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -5675,6 +6179,21 @@ export type AiImageGeneratorCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -5852,6 +6371,21 @@ export type AiImageUpscalerCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -6005,6 +6539,21 @@ export type AiMemeGeneratorCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -6154,6 +6703,21 @@ export type AiQrCodeGeneratorCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -6320,6 +6884,21 @@ export type BodySwapCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -6511,6 +7090,21 @@ export type FaceSwapPhotoCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -6677,6 +7271,21 @@ export type HeadSwapCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -6841,6 +7450,21 @@ export type ImageBackgroundRemoverCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -6994,6 +7618,21 @@ export type PhotoColorizerCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -7164,6 +7803,21 @@ export type AudioProjectsGetResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -7259,6 +7913,21 @@ export type AudioProjectsDeleteResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -7395,6 +8064,21 @@ export type AiMusicGeneratorCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -7557,6 +8241,21 @@ export type AiVoiceClonerCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
@@ -7712,6 +8411,21 @@ export type AiVoiceGeneratorCreateResponse402 = {
    * Credits missing from the account balance for this request. Only present for `insufficient_credits`.
    */
   credit_shortfall?: number;
+  /**
+   * Account balance when the request was checked. Only present for `insufficient_credits`.
+   */
+  credits_available?: number;
+  /**
+   * Credits the request costs. Resubmit the same request once the account balance from `GET /v1/account` reaches this. Only present for `insufficient_credits`.
+   */
+  credits_required?: number;
+  /**
+   * What the account owner can do about the rejection, when the API knows more than the error code says. Currently only present for `insufficient_credits` on image-to-video requests from an account with Auto Reload on. `check_balance`: a refill is processing; resubmit the same request once the account balance covers it.
+   */
+  next_action?: {
+    type: "check_balance" | "update_payment_method" | "buy_credits";
+    reason: "auto_reload_pending" | "payment_failed" | "spending_limit_reached";
+  };
 };
 
 /**
